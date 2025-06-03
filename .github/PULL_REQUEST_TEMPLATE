@@ -1,0 +1,26 @@
+# This looks like an unauthorized PR:
+# ![](https://media2.giphy.com/media/L4Bb7zCaP8FB5C769T/giphy.gif)
+# ℹ️ The correct workflow is to use the branch made by the jira ticket.
+# You must have done something wrong 😞 
+
+# #### 💡 It's okay for this time, but tell me more about it:
+# - [ ] 🍕 Feature
+# - [ ] 🐛 Bug Fix
+# - [ ] 🧑‍💻 Code Refactor
+# - [ ] 📝 Documentation Update
+# - [ ] 🔥 Performance Improvements
+# - [ ] ✅ Test
+# - [ ] 🔁 CI
+# - [ ] 📦 Chore
+# - [ ] ⏩ Revert
+
+# ---------------
+
+# ### 🚨 Reminder:
+# - [ ] ⚠️ This PR does not introduce new bugs in Sonar.
+# - [ ] ⚠️ When merging into dev, i'll use squach-merge
+# - [ ] ⚠️ The code review AND merge is done by another person than the developers
+
+# #### 🍴 In case of conflicts
+# - I looked into the conflicts, understood them and fixed them manually
+# - I tried merging dev -> this branch.

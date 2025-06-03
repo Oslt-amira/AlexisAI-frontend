@@ -1,0 +1,54 @@
+# name: 🥚🌞 DEPLOY DEV
+# on:
+#   push:
+#     branches:
+#       - dev
+#   workflow_dispatch:
+# env:
+#   REGISTRY: registry.digitalocean.com/cc-dev-registry
+#   IMAGE_NAME: alexisai-frontend
+
+# jobs:
+#   build_and_push:
+#     runs-on: ubuntu-latest
+#     name: 🏗️ Build and Push
+#     steps:
+#       - name: 🧪 Checkout the repo
+#         uses: actions/checkout@v2
+#       - name: 🏗️ Build container image
+#         run: docker build --build-arg ENVIRONMENT=production -t $REGISTRY/$IMAGE_NAME:$(echo $GITHUB_SHA | head -c7) .
+#       - name: 📥 Install doctl
+#         uses: digitalocean/action-doctl@v2
+#         with:
+#           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#       - name: 🔒 Log in to DigitalOcean Container Registry with short-lived credentials
+#         run: doctl registry login --expiry-seconds 600
+#       - name: 🚀 Push image to DigitalOcean Container Registry
+#         run: docker push $REGISTRY/$IMAGE_NAME:$(echo $GITHUB_SHA | head -c7)
+
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build_and_push
+#     name: 🚢 Deploy
+#     steps:
+#       - name: 🚢 Deploy to Digital Ocean droplet via SSH action
+#         uses: appleboy/ssh-action@v0.1.3
+#         with:
+#           host: 164.90.233.11
+#           username: root
+#           key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
+#           passphrase: ''
+#           envs: IMAGE_NAME,REGISTRY,DIGITALOCEAN_ACCESS_TOKEN,GITHUB_SHA
+#           script: |
+#             # Login to registry
+#             docker login -u $DIGITALOCEAN_ACCESS_TOKEN -p $DIGITALOCEAN_ACCESS_TOKEN registry.digitalocean.com
+#             # Stop running container
+#             docker stop $IMAGE_NAME 2> /dev/null || true
+#             # Remove old container
+#             docker rm $IMAGE_NAME 2> /dev/null || true
+#             # Run a new container from a new image
+#             docker run -d \
+#               -p 3121:3000 \
+#               --restart on-failure:5 \
+#               --name $IMAGE_NAME \
+#               $REGISTRY/$IMAGE_NAME:$(echo $GITHUB_SHA | head -c7)

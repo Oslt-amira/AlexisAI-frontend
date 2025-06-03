@@ -1,0 +1,104 @@
+# name: 🤖 Create and Tag PR
+# on:
+#   push:
+#     branches:
+#       - 'feature/AL-*'
+#       - 'bugfix/AL-*'
+
+# jobs:
+#   auto-pull-request:
+#     if: github.event.created == false
+#     name: 🤖 Create PR - ${{ github.ref }}
+#     runs-on: ubuntu-latest
+#     steps:
+
+# #       - name: Output Run ID
+# #         run: echo ${{ github.run_id }}
+# #       - name: Output Run Number
+# #         run: echo ${{ github.run_number }}
+# #       - name: Output Run Attempt
+# #         run: echo ${{ github.run_attempt }}
+# #       - name: Github Ref
+# #         run: echo ${{ github.ref }}
+# #       - name: Github Event Before
+# #         run: echo ${{ github.event.before }}
+# #       - name: Github Event Created
+# #         run: echo ${{ github.event.created  }}
+# #       - name: Github PR Template
+# #         run: echo $(cat .github/PULL_REQUEST_TEMPLATE.md)
+#       - name: Read PR template
+#         id: pr_template
+#         run: |
+#           echo "::set-output name=template::$(cat .github/PULL_REQUEST_TEMPLATE.md)"
+#       - name: Set ticket number
+#         id: set_ticket_number
+#         run: |
+#           TICKET_NUMBER=$(echo ${{ github.ref }}  | sed 's/^refs\/heads\///' | sed 's/feature\///' | sed 's/bugfix\///' | sed 's/AL-//')
+#           SHORT_TICKET_NUMBER=$(echo $TICKET_NUMBER | tail -c 2)
+#           echo "TICKET_NUMBER=$TICKET_NUMBER" >> $GITHUB_ENV
+#           echo "SHORT_TICKET_NUMBER=$SHORT_TICKET_NUMBER" >> $GITHUB_ENV
+
+#       - name: 📝 Set PR title and body
+#         id: pr_vars
+#         run: |
+#           BRANCH_NAME=$(echo ${{ github.ref }} | sed 's/^refs\/heads\///')
+#           echo "::set-output name=title::${BRANCH_NAME}"
+#           echo "::set-output name=body::${{ steps.pr_template.outputs.template }}"
+#           if [[ $BRANCH_NAME == feature/* ]]; then
+#             PR_TYPE="feature"
+#           elif [[ $BRANCH_NAME == bugfix/* ]]; then
+#             PR_TYPE="bugfix"
+#           else
+#             PR_TYPE="other"
+#           fi
+#           echo "::set-output name=pr_type::${PR_TYPE}"
+
+#       - name: 💾 Create PR
+#         id: pr_create
+#         uses: vsoch/pull-request-action@master
+#         env:
+#           PASS_IF_EXISTS: true
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           PULL_REQUEST_BRANCH: "dev"
+# #           PULL_REQUEST_BODY: ${{ steps.pr_vars.outputs.body }}
+#           PULL_REQUEST_BODY: |
+#             ### 📙 Explanation:
+#             - This PR was created automagically beacause you first pushed in an IN PROGRESS ticket.
+#             - It will be commented and updated with advices, checks, and tools to assist you in coding.
+#             - It will be **CLOSED and MERGED** ONLY **when then ticket is marked as DONE in JIRA.**
+#             ---------------
+
+#             ### 🚨 Reminder:
+#             - [ ] 🐛 This PR does not introduce new bugs in Sonar.
+#             - [ ] ✅ I'll only merge -> dev when the ticket in JIRA is set to DONE.
+#             - [ ] 🍋 When merging into dev, i'll use squach-merge
+#             - [ ] 🕵️ The code review is done by another person than the developer
+
+#             #### 🍴 In case of conflicts
+#             - 🔍 I looked into the conflicts, understood them and fixed them manually
+#             - ↩️ I tried merging dev -> this branch to bring the changes that i missed
+#             ---------------
+#             #### 📜 3️⃣ Runtime Logs
+#             - 🏷️ https://tooling.ccdev.space/
+#             ---------------
+#           PULL_REQUEST_TITLE: ${{ steps.pr_vars.outputs.title }}
+#           PULL_REQUEST_ASSIGNEES: ${{ github.actor }}
+#           PULL_REQUEST_REVIEWERS: hacKarim
+
+# #       - name: Test outputs
+# #         env:
+# #           pull_request_number_output: ${{ steps.pr_create.outputs.pull_request_number }}
+# #           pull_request_url_output: ${{ steps.pr_create.outputs.pull_request_url }}
+# #         run: |
+# #           echo "Pull request number from output: ${pull_request_number_output}"
+# #           echo "Pull request url from output: ${pull_request_url_output}"
+# #           echo "Pull request number from environment: ${PULL_REQUEST_NUMBER}"
+# #           echo "Pull request url from environment: ${PULL_REQUEST_URL}"
+# #           echo "Another way to specify from output ${{ steps.pull_request.outputs.pull_request_number }}"
+
+#       - name: 📑 Add labels
+#         if: ${{ steps.pr_create.outputs.pull_request_number }}
+#         uses: actions-ecosystem/action-add-labels@v1
+#         with:
+#           number: ${{ steps.pr_create.outputs.pull_request_number }}
+#           labels: ${{ steps.pr_vars.outputs.pr_type }}
