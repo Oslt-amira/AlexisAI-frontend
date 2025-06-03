@@ -33,7 +33,6 @@ Alexis is an intelligent, curriculum-aware educational assistant built to suppor
 
 ---
 
-## 🧱 Architecture Overview
 
 ## 🧱 Architecture Overview
 
