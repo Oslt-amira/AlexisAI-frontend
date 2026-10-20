@@ -11,6 +11,8 @@
 
 # next.js
 /.next/
+/.next-alexis-preview/
+/.next-familiars/
 /out/
 
 # production

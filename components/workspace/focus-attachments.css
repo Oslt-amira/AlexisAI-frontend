@@ -1,0 +1,836 @@
+.chat-attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+  max-width: 100%;
+}
+.composer .chat-attachment-list {
+  padding: 14px 16px 0;
+  margin: 0;
+}
+.chat-attachment-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  min-width: 0;
+  max-width: 260px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 10px 11px;
+  background: var(--surface);
+}
+.chat-attachment-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  flex-shrink: 0;
+  background: var(--subtle);
+  color: var(--green-ink);
+  border-radius: 7px;
+}
+.chat-attachment-chip > span:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+.chat-attachment-chip b {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 500;
+}
+.chat-attachment-chip small {
+  display: block;
+  color: var(--muted-ink);
+  font-size: 9px;
+  margin-top: 4px;
+}
+.chat-attachment-chip .icon-button {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.attachment-loading {
+  display: block;
+  color: var(--muted-ink);
+  font-size: 11px;
+  padding: 12px 18px 0;
+}
+.refined-focus-toolbar {
+  gap: 6px !important;
+  padding: 7px 8px 7px 10px !important;
+  border-radius: 16px;
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--surface) 72%, #fff) inset,
+    0 14px 34px -20px #142b212e,
+    0 2px 10px #142b210a;
+  isolation: isolate;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.refined-focus-toolbar:hover {
+  border-color: var(--line-hover);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--surface) 72%, #fff) inset,
+    0 18px 38px -20px #142b2136,
+    0 2px 10px #142b210d;
+}
+.refined-focus-toolbar.is-complete {
+  border-color: var(--green-border);
+  background: var(--surface);
+}
+.focus-dock-progress-track {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.focus-dock-progress {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: var(--focus-progress, 0%);
+  min-width: 2px;
+  max-width: calc(100% - 20px);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green);
+  opacity: 0.5;
+  transition: width 0.4s linear;
+}
+.refined-focus-toolbar.is-complete .focus-dock-progress {
+  opacity: 0.8;
+}
+.focus-timer-control {
+  position: relative;
+}
+.focus-clock-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 8px 5px 6px;
+  border-radius: 11px;
+  transition: background 0.15s var(--ease);
+}
+.focus-clock-button:hover,
+.focus-clock-button[aria-expanded="true"] {
+  background: var(--subtle);
+}
+.focus-clock-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--green) var(--focus-progress, 0%),
+    var(--line) 0
+  );
+}
+.focus-clock-ring::before {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 50%;
+  background: var(--knob);
+  transition: background 0.2s;
+}
+.focus-clock-button:hover .focus-clock-ring::before,
+.focus-clock-button[aria-expanded="true"] .focus-clock-ring::before {
+  background: var(--subtle);
+}
+.focus-timer-dot {
+  position: relative;
+  z-index: 1;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line-hover);
+  transition: background 0.2s;
+}
+.focus-timer-dot.is-running {
+  background: #3f7a4f;
+  animation: focus-pulse 2.4s ease-in-out infinite;
+}
+.focus-timer-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+.focus-clock {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.focus-timer-state {
+  font-size: 10.5px;
+  line-height: 1;
+  color: var(--muted-ink);
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+.refined-focus-toolbar.is-running .focus-timer-state,
+.refined-focus-toolbar.is-complete .focus-timer-state {
+  color: var(--green-ink);
+}
+.focus-clock-caret {
+  flex-shrink: 0;
+  color: var(--muted-ink);
+  transition:
+    transform 0.18s var(--ease),
+    color 0.15s var(--ease);
+}
+.focus-clock-button:hover .focus-clock-caret {
+  color: var(--body-ink);
+}
+.focus-clock-button[aria-expanded="true"] .focus-clock-caret {
+  transform: rotate(180deg);
+  color: var(--green-ink);
+}
+.refined-focus-toolbar .timer-play {
+  width: 32px;
+  height: 32px;
+  margin-left: 2px;
+  background: var(--green);
+  box-shadow: 0 4px 10px -4px #123c2b66;
+  transition:
+    transform 0.15s var(--ease),
+    background 0.15s var(--ease);
+}
+.refined-focus-toolbar .timer-play:hover {
+  background: var(--green-hover);
+  transform: translateY(-1px);
+}
+.refined-focus-toolbar .timer-play:active {
+  transform: translateY(0);
+}
+.refined-focus-toolbar .timer-play svg {
+  margin-left: 0.5px;
+}
+.refined-focus-toolbar .focus-reset {
+  width: 30px;
+  height: 30px;
+  color: var(--muted-ink);
+}
+.refined-focus-toolbar .focus-reset:hover {
+  background: var(--subtle);
+  color: var(--green-ink);
+}
+.refined-focus-toolbar .exit-focus {
+  gap: 5px;
+  margin-left: 2px;
+  padding: 7px 8px 7px 12px;
+  border-left: 1px solid var(--line);
+  border-radius: 0 10px 10px 0;
+  font-size: 11.5px;
+  color: var(--muted-ink);
+  transition:
+    color 0.15s var(--ease),
+    background 0.15s var(--ease);
+}
+.refined-focus-toolbar .exit-focus:hover {
+  color: var(--green-ink);
+  background: var(--subtle);
+}
+.focus-timer-popover {
+  position: absolute;
+  left: -10px;
+  top: calc(100% + 18px);
+  width: 326px;
+  max-width: calc(100vw - 28px);
+  max-height: calc(100dvh - 140px);
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow:
+    0 24px 60px -20px #142b2133,
+    0 6px 18px #142b210d;
+  padding: 16px;
+  white-space: normal;
+  text-align: left;
+  animation: ui-rise 0.18s var(--ease);
+  z-index: 30;
+}
+.focus-popover-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.focus-popover-header b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.focus-popover-header small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: var(--muted-ink);
+}
+.focus-timer-popover .icon-button {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--muted-ink);
+}
+.focus-preset-group + .focus-preset-group {
+  margin-top: 12px;
+}
+.focus-preset-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 9.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+.focus-duration-presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.focus-preset {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  text-align: left;
+  transition:
+    border-color 0.15s var(--ease),
+    background 0.15s var(--ease),
+    transform 0.15s var(--ease);
+}
+.focus-preset:hover {
+  background: var(--subtle);
+  border-color: var(--line-hover);
+}
+.focus-preset:active {
+  transform: scale(0.985);
+}
+.focus-preset[aria-pressed="true"] {
+  border-color: var(--green-border);
+  background: var(--green-soft);
+}
+.focus-preset-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--subtle);
+  color: var(--body-ink);
+  transition:
+    background 0.15s var(--ease),
+    color 0.15s var(--ease);
+}
+.focus-preset[aria-pressed="true"] .focus-preset-icon {
+  background: var(--green-soft);
+  color: var(--green-ink);
+}
+.focus-preset-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.focus-preset-copy b {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.focus-preset-copy b small {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted-ink);
+}
+.focus-preset-copy > span {
+  overflow: hidden;
+  font-size: 10.5px;
+  color: var(--muted-ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.focus-preset-check {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--surface);
+  transform: translateY(-50%);
+}
+.focus-custom-form {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.focus-custom-form > label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+
+.focus-stepper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color 0.15s var(--ease);
+}
+.focus-stepper:hover {
+  border-color: var(--line-hover);
+}
+.focus-stepper button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  flex-shrink: 0;
+  color: var(--muted-ink);
+  transition:
+    background 0.15s var(--ease),
+    color 0.15s var(--ease);
+}
+.focus-stepper button:hover {
+  background: var(--subtle);
+  color: var(--green-ink);
+}
+.focus-stepper-value {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 0 ;
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.focus-stepper-value input {
+  width: 44px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.focus-stepper-value input::-webkit-outer-spin-button,
+.focus-stepper-value input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+.focus-stepper-value input:focus {
+  outline: none;
+}
+.focus-stepper-value:focus-within {
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1.5px var(--green-border);
+}
+.focus-stepper-value:has(input[aria-invalid="true"]) {
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1.5px var(--danger);
+}
+.focus-stepper-value > span {
+  font-size: 10px;
+  color: var(--muted-ink);
+}
+.focus-custom-submit {
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 0 13px;
+  border-radius: 10px;
+  font-size: 13px !important;
+}
+.focus-custom-hint {
+  margin-top: 9px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--muted-ink);
+}
+.focus-custom-hint.is-error {
+  color: var(--danger);
+}
+.focus-breathing-glow.is-paused {
+  animation-play-state: paused;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s;
+}
+.focus-breathing-glow.is-running {
+  animation-play-state: running;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s;
+}
+.focus-plant {
+  position: fixed;
+  right: 24px;
+  bottom: 18px;
+  width: 100px;
+  z-index: 24;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.focus-plant-button {
+  position: relative;
+  width: 95px;
+  height: 104px;
+  display: block;
+  pointer-events: auto;
+  border-radius: 22px;
+}
+.plant-art {
+  position: absolute;
+  inset: 5px 3px 5px;
+  display: block;
+  transition: transform 0.3s var(--ease);
+}
+.plant-leaves,
+.plant-pot,
+.plant-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  user-select: none;
+}
+.plant-leaves {
+  transform-origin: 50% 63%;
+  transform: scale(var(--plant-growth));
+  animation: fern-sway 5s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.focus-plant.is-growing .plant-leaves {
+  animation-play-state: running;
+}
+.plant-pot {
+  z-index: 1;
+}
+.plant-face {
+  z-index: 2;
+  color: var(--warning);
+  fill: currentColor;
+}
+.plant-eyes {
+  transform-origin: 50% 83%;
+  animation: fern-blink 7s infinite;
+}
+.plant-shadow {
+  position: absolute;
+  bottom: 4px;
+  left: 22px;
+  right: 22px;
+  height: 6px;
+  border-radius: 50%;
+  background: #15382b10;
+  filter: blur(3px);
+}
+.focus-plant-button:hover .plant-art {
+  transform: translateY(-4px) rotate(-3deg);
+}
+.focus-plant.is-watered .plant-art {
+  animation: fern-happy 0.55s var(--ease) 2;
+}
+.focus-plant-bubble {
+  position: absolute;
+  bottom: 116px;
+  right: 0;
+  padding: 9px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 11px 11px 3px 11px;
+  box-shadow: 0 4px 15px #152b2109;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.focus-plant:hover .focus-plant-bubble,
+.focus-plant:focus-within .focus-plant-bubble,
+.focus-plant.is-watered .focus-plant-bubble {
+  opacity: 1;
+  transform: translateY(0);
+}
+.plant-water {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  color: var(--info);
+  z-index: 3;
+  animation: fern-water 0.9s ease-in infinite;
+}
+.plant-water > svg:last-child {
+  position: absolute;
+  top: 5px;
+  left: 66px;
+  color: var(--green-ink);
+  animation: fern-heart 1.5s ease-out infinite;
+}
+.plant-credit {
+  pointer-events: auto;
+  font-size: 7px;
+  color: var(--muted-ink);
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+.focus-plant:hover .plant-credit,
+.focus-plant:focus-within .plant-credit {
+  opacity: 1;
+}
+@keyframes fern-sway {
+  0%,
+  100% {
+    transform: scale(var(--plant-growth)) rotate(-2deg);
+  }
+  50% {
+    transform: scale(var(--plant-growth)) rotate(2deg);
+  }
+}
+@keyframes fern-blink {
+  0%,
+  44%,
+  48%,
+  100% {
+    transform: scaleY(1);
+  }
+  46% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes fern-happy {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  35% {
+    transform: translateY(-6px) rotate(-4deg);
+  }
+  70% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+}
+@keyframes fern-water {
+  0% {
+    transform: translateY(-9px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+@keyframes fern-heart {
+  0% {
+    transform: translateY(8px) scale(0.6);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0;
+  }
+}
+@keyframes focus-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #3f7a4f33;
+  }
+  50% {
+    box-shadow: 0 0 0 4px #3f7a4f12;
+  }
+}
+@media (max-width: 600px) {
+  .focus-plant {
+    right: 10px;
+    bottom: 145px;
+    width: 65px;
+  }
+  .focus-plant-button {
+    width: 65px;
+    height: 72px;
+  }
+  .focus-plant-bubble {
+    bottom: 83px;
+    font-size: 9px;
+  }
+  .plant-credit {
+    font-size: 6px;
+  }
+  .focus-timer-popover {
+    left: -8px;
+    width: 300px;
+    max-width: calc(100vw - 24px);
+    padding: 14px;
+  }
+  .refined-focus-toolbar .exit-focus {
+    padding-left: 8px;
+  }
+  .refined-focus-toolbar .focus-clock {
+    font-size: 17px;
+  }
+  .refined-focus-toolbar {
+    gap: 4px !important;
+    padding: 6px 7px 6px 8px !important;
+  }
+  .focus-dock-progress {
+    left: 8px;
+    max-width: calc(100% - 16px);
+  }
+  .refined-focus-toolbar .timer-play {
+    width: 30px;
+    height: 30px;
+  }
+  .focus-clock-ring {
+    width: 27px;
+    height: 27px;
+  }
+  .focus-timer-state {
+    font-size: 10px;
+  }
+  .chat-attachment-chip {
+    max-width: 100%;
+  }
+  .composer .chat-attachment-list {
+    padding: 12px 12px 0;
+  }
+  .plant-water > svg:last-child {
+    left: 45px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-plant * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .focus-timer-popover {
+    animation: none;
+  }
+  .focus-timer-dot.is-running {
+    animation: none;
+  }
+  .focus-dock-progress,
+  .focus-clock-ring,
+  .focus-timer-state {
+    transition: none !important;
+  }
+}
+
+/* Companion selection shares the focus dock's quiet visual treatment. */
+.plant-companion-trigger { pointer-events: auto; position: absolute; right: 0; bottom: 16px; display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--muted-ink); box-shadow: 0 2px 8px #142b210a; }
+.plant-companion-trigger:hover, .plant-companion-trigger[aria-expanded="true"] { color: var(--green-ink); border-color: var(--green-border); }
+.plant-companion-menu { pointer-events: auto; position: absolute; right: 0; bottom: 124px; width: 256px; max-width: calc(100vw - 28px); padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 12px 40px #142b2120; }
+.plant-companion-title { display: block; margin-bottom: 12px; font-size: 12px; font-weight: 500; }
+.plant-companion-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.plant-companion-options button { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 6px; border: 1px solid var(--line); border-radius: 10px; font-size: 10px; }
+.plant-companion-options button:hover { background: var(--subtle); }
+.plant-companion-options button[aria-pressed="true"] { border-color: var(--green-border); background: var(--green-soft); color: var(--green-ink); }
+.plant-companion-options img { width: 42px; height: 42px; object-fit: contain; }
+.plant-companion-menu > p { margin-top: 12px; color: var(--muted-ink); font-size: 9px; }
+.plant-companion-art { width: 100%; height: 100%; object-fit: contain; transform: scale(var(--plant-growth)); }
+.focus-plant.is-growing .plant-companion-art { animation: fern-sway 5s ease-in-out infinite; }
+.focus-plant.is-reminding .focus-plant-bubble { opacity: 1; transform: none; }
+.focus-plant.is-picking .focus-plant-bubble { opacity: 0; }
+.chat-attachment-list { gap: 6px; }
+.chat-attachment-chip { width: 190px; max-width: 100%; padding: 6px 8px; gap: 7px; border-radius: 9px; }
+.chat-attachment-icon { width: 26px; height: 28px; border-radius: 6px; }
+.chat-attachment-chip small { margin-top: 2px; }
+.composer .chat-attachment-list { flex-wrap: nowrap; overflow-x: auto; padding: 9px 12px 0; scrollbar-width: thin; }
+.composer .chat-attachment-chip { flex: 0 0 180px; }
+@media (max-width: 600px) {
+  .plant-companion-menu { bottom: 92px; }
+  .plant-companion-trigger { right: -2px; bottom: 7px; }
+  .chat-attachment-chip { width: 170px; }
+  .composer .chat-attachment-list { padding: 8px 10px 0; }
+}
+
+/* Original familiars: quiet forms and individual, restrained motion. */
+.familiar-art { width: 100%; height: 100%; overflow: visible; }
+.plant-companion-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.plant-companion-menu { width: 296px; }
+.plant-companion-options .familiar-art { width: 46px; height: 56px; }
+.plant-companion-options img { height: 56px; }
+.plant-companion-options button { gap: 6px; padding: 12px 3px; }
+.plant-companion-options small { font-size: 8px; color: var(--muted-ink); white-space: nowrap; }
+.companion-cat .plant-art, .companion-alien .plant-art { inset: -8px 0 0; }
+.companion-cat.is-watered .plant-art, .companion-alien.is-watered .plant-art { animation: none; }
+.familiar-cat-tail { transform-origin: 81px 121px; animation: familiar-tail 7s ease-in-out infinite; }
+.familiar-cat-eyes { transform-origin: 62px 59px; animation: familiar-blink 8s infinite; }
+.familiar-purr, .familiar-signal { opacity: 0; }
+.companion-cat .focus-plant-button:hover .plant-art, .companion-alien .focus-plant-button:hover .plant-art { transform: none; }
+.companion-cat .focus-plant-button:hover .familiar-cat-head { transform: rotate(-4deg); }
+.familiar-cat-head { transform-origin: 62px 84px; transition: transform .4s ease; }
+.companion-cat.is-watered .familiar-cat-head { transform: rotate(-7deg) translateY(2px); }
+.companion-cat.is-watered .familiar-cat-eyes { transform: scaleY(.15); animation: none; }
+.companion-cat.is-watered .familiar-cat-tail { animation: familiar-tail 1.3s ease-in-out infinite; }
+.companion-cat.is-watered .familiar-purr { animation: familiar-purr 1s ease-in-out infinite; }
+.familiar-alien-body { transform-origin: 60px 80px; animation: familiar-hover 6s ease-in-out infinite; }
+.familiar-alien-hand { transform-origin: 73px 94px; }
+.companion-alien.is-watered .familiar-alien-hand { animation: familiar-wave .8s ease-in-out 3; }
+.companion-alien.is-watered .familiar-signal { animation: familiar-purr 1.2s ease-in-out 2; }
+.companion-alien.is-growing .familiar-alien-shadow { animation: familiar-shadow 6s ease-in-out infinite; }
+@keyframes familiar-tail { 0%, 70%, 100% { transform: rotate(0); } 80% { transform: rotate(-9deg); } 90% { transform: rotate(4deg); } }
+@keyframes familiar-blink { 0%, 44%, 48%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.12); } }
+@keyframes familiar-hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes familiar-shadow { 0%, 100% { transform: scaleX(1); opacity: .18; } 50% { transform: scaleX(.8); opacity: .1; } }
+@keyframes familiar-wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-14deg); } }
+@keyframes familiar-purr { 0%, 100% { opacity: 0; } 50% { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .focus-plant .familiar-art * { animation: none !important; transition: none !important; } .is-watered .familiar-purr, .is-watered .familiar-signal { opacity: .7; } }
+@media (max-width: 600px) {
+  .focus-plant { bottom: max(145px, var(--composer-clearance, 145px)); }
+}
