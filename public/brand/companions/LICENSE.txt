@@ -1,0 +1,6 @@
+Original vector companion artwork
+
+The original vector cat, mushroom and spirit illustrations in components/workspace/familiar-art.tsx are dedicated under CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Legacy Twemoji SVG assets have a separate CC BY 4.0 notice in /brand/focus-plant-CREDITS.md and /brand/focus-plant-LICENSE.txt.

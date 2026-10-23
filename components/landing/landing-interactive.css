@@ -1,0 +1,198 @@
+/* Editorial hero: familiar tools, a working appearance switch, and room to breathe. */
+.alexis-landing .lp-editorial-hero { min-height: 0; padding-block: 153px 65px; gap: 52px; }
+.alexis-landing .lp-editorial-hero::before { display: none; }
+.alexis-landing .lp-editorial-hero .lp-hero-copy { max-width: 850px; }
+.alexis-landing .lp-editorial-hero h1 { display: grid; gap: 8px; margin-block: 24px; font-size: clamp(40px,4.6vw,59px); font-weight: 500; letter-spacing: -2.3px; line-height: 1.16; color: var(--muted-ink); }
+.alexis-landing .lp-hero-line { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.alexis-landing .lp-hero-line strong { font-weight: 500; color: var(--ink); }
+.alexis-landing .lp-hero-tiles { display: inline-flex; align-items: center; margin-right: 3px; }
+.alexis-landing .lp-hero-tiles > span { --tilt: -12deg; display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--surface); box-shadow: 0 7px 13px #00000012; transform: rotate(var(--tilt)); animation: lp-tile-drift 8s ease-in-out infinite; }
+.alexis-landing .lp-hero-tiles > span:nth-child(2) { --tilt: 7deg; margin-inline: -3px; color: var(--green-ink); animation-delay: -2.5s; }
+.alexis-landing .lp-hero-tiles > span:nth-child(3) { --tilt: -5deg; background: var(--ink); color: var(--surface); animation-delay: -5s; }
+.alexis-landing .lp-hero-switch { position: relative; display: inline-flex; align-items: center; justify-content: space-between; flex-shrink: 0; width: 66px; height: 36px; padding: 0 10px; margin-right: 3px; border: 1px solid color-mix(in srgb,var(--green) 18%,var(--line)); border-radius: 100px; color: var(--green-ink); background: linear-gradient(110deg,color-mix(in srgb,var(--green) 22%,#b3dce9),color-mix(in srgb,var(--green) 40%,#d3c1f1)); box-shadow: inset 0 1px 3px #0000000a; cursor: pointer; }
+.alexis-landing .lp-hero-switch > span { position: absolute; top: 3px; left: 3px; width: 28px; height: 28px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px #00000020; transition: translate .3s var(--ease); }
+.alexis-landing .lp-hero-switch[aria-checked="true"] > span { translate: 30px 0; }
+.alexis-landing .lp-editorial-hero .lp-hero-copy > p { max-width: 395px; font-size: 14px; line-height: 1.7; margin: 0 auto 25px; }
+.alexis-landing .lp-editorial-hero .lp-hero-actions { gap: 10px; }
+.alexis-landing .lp-editorial-hero .lp-button { min-height: 40px; padding: 10px 17px; border-radius: 100px; gap: 10px; }
+.alexis-landing .lp-editorial-hero .secondary-button { background: var(--surface-muted); color: var(--ink); border-color: transparent; box-shadow: none; }
+.alexis-landing .lp-editorial-hero .secondary-button:hover { background: var(--hover); }
+.alexis-landing .lp-mac-wrap { width: min(100%,950px); text-align: left; }
+.alexis-landing .lp-mac-window { overflow: clip; border: 1px solid var(--line-hover); border-radius: 17px; background: var(--canvas); box-shadow: 0 24px 65px -37px #142b214d,0 0 0 5px var(--surface-muted); }
+.alexis-landing .lp-mac-titlebar { display: flex; align-items: center; justify-content: space-between; gap: 15px; height: 43px; padding: 0 15px; background: var(--surface-soft); border-bottom: 1px solid var(--line); color: var(--body-ink); font-size: 11px; }
+.alexis-landing .lp-mac-titlebar small { color: var(--muted-ink); font-size: 10px; }
+.alexis-landing .lp-traffic-lights { display: flex; gap: 6px; min-width: 65px; }
+.alexis-landing .lp-traffic-lights i { width: 7px; height: 7px; border-radius: 50%; background: #ec9b94; }
+.alexis-landing .lp-traffic-lights i:nth-child(2) { background: #e5cb93; }
+.alexis-landing .lp-traffic-lights i:nth-child(3) { background: #9bbf9e; }
+.alexis-landing .lp-mac-titlebar > div { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 7px; }
+.alexis-landing .lp-mac-titlebar button { display: grid; place-items: center; width: 24px; height: 22px; border-radius: 4px; color: var(--muted-ink); }
+.alexis-landing .lp-mac-titlebar button[aria-pressed="true"] { background: var(--hover); color: var(--ink); }
+.alexis-landing .lp-mac-body { display: grid; grid-template-columns: 165px minmax(0,1fr); min-height: 393px; }
+.alexis-landing .lp-mac-sidebar { display: flex; flex-direction: column; gap: 4px; padding: 23px 15px 18px; border-right: 1px solid var(--line); background: var(--surface-soft); }
+.alexis-landing .lp-mac-sidebar > div { display: grid; gap: 4px; margin-block: 20px; }
+.alexis-landing .lp-mac-sidebar button { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: 7px; font-size: 11px; color: var(--muted-ink); text-align: left; }
+.alexis-landing .lp-mac-sidebar button:hover { background: var(--hover); }
+.alexis-landing .lp-mac-sidebar button[aria-pressed="true"] { background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-mac-sidebar > small { margin: 0 10px 5px; font-size: 8px; color: var(--muted-ink); }
+.alexis-landing .lp-mac-sidebar > p { margin: 3px 10px; font-size: 9px; color: var(--muted-ink); }
+.alexis-landing .lp-mac-profile { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px; font-size: 10px; }
+.alexis-landing .lp-mac-profile > span { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-mac-profile small { color: var(--muted-ink); font-size: 9px; }
+.alexis-landing .lp-mac-main { min-width: 0; padding: 21px 30px; }
+.alexis-landing .lp-mac-toolbar { display: flex; align-items: center; justify-content: space-between; color: var(--muted-ink); font-size: 10px; margin-bottom: 23px; }
+.alexis-landing .lp-mac-view { animation: lp-preview-arrive .3s ease both; }
+.alexis-landing .lp-mac-kicker { color: var(--muted-ink); font-size: 8px; letter-spacing: .06em; }
+.alexis-landing .lp-mac-view h3 { font-size: 25px; font-weight: 500; letter-spacing: -.7px; margin-block: 7px 20px; }
+.alexis-landing .lp-mac-question { width: fit-content; max-width: 90%; margin-left: auto; padding: 11px 14px; border-radius: 10px; color: var(--body-ink); background: var(--subtle); font-size: 11px; }
+.alexis-landing .lp-mac-reply { display: flex; align-items: start; gap: 12px; margin-top: 23px; }
+.alexis-landing .lp-mac-reply img { flex-shrink: 0; }
+.alexis-landing .lp-mac-reply p { color: var(--body-ink); font-size: 11px; line-height: 1.8; max-width: 440px; }
+.alexis-landing .lp-mac-source { display: flex; align-items: center; gap: 5px; font-size: 8px; color: var(--green-ink); margin: 10px 0 0 38px; }
+.alexis-landing .lp-mac-composer { margin-top: 22px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted-ink); font-size: 10px; }
+.alexis-landing .lp-mac-composer > div { display: flex; align-items: center; gap: 7px; margin-top: 18px; }
+.alexis-landing .lp-mac-composer small { font-size: 8px; flex: 1; }
+.alexis-landing .lp-mac-composer > div > span { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: var(--green); color: var(--brand-on); }
+.alexis-landing .lp-mac-caption { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 21px; color: var(--muted-ink); font-size: 11px; }
+.alexis-landing .lp-mac-caption > div { display: flex; align-items: center; gap: 5px; }
+.alexis-landing .lp-mac-caption button { display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border-radius: 6px; color: var(--muted-ink); font-size: 10px; border: 1px solid transparent; }
+.alexis-landing .lp-mac-caption button[aria-pressed="true"] { border-color: var(--line); background: var(--surface-soft); color: var(--ink); }
+.alexis-landing .lp-mac-caption button i { width: 9px; height: 9px; border-radius: 50%; background: var(--swatch); }
+.alexis-landing .lp-mac-file { display: flex; align-items: center; gap: 11px; padding: 18px 0; color: var(--muted-ink); border-bottom: 1px solid var(--line); }
+.alexis-landing .lp-mac-file > span { flex: 1; }
+.alexis-landing .lp-mac-file b { display: block; font-size: 12px; color: var(--body-ink); font-weight: 500; }
+.alexis-landing .lp-mac-file small { display: block; font-size: 9px; margin-top: 5px; }
+.alexis-landing .lp-mac-week { display: flex; gap: 7px; margin: 5px 0 12px; }
+.alexis-landing .lp-mac-week > span { flex: 1; text-align: center; padding: 12px 5px; border-radius: 8px; color: var(--muted-ink); font-size: 9px; }
+.alexis-landing .lp-mac-week b { display: block; font-size: 13px; font-weight: 500; margin-top: 7px; }
+.alexis-landing .lp-mac-week .active { background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-mac-session { display: flex; align-items: center; gap: 14px; padding: 17px 0; border-bottom: 1px solid var(--line); color: var(--muted-ink); font-size: 10px; }
+.alexis-landing .lp-mac-session > div { flex: 1; }
+.alexis-landing .lp-mac-session b { display: block; color: var(--body-ink); font-size: 11px; font-weight: 500; }
+.alexis-landing .lp-mac-session small { display: block; font-size: 9px; margin-top: 4px; }
+.alexis-landing .lp-focus-feature { display: grid; grid-template-columns: .8fr 1.2fr; grid-column: 1 / -1; align-items: center; gap: 35px; padding: 28px 35px; }
+.alexis-landing .lp-focus-feature h3 { font-size: 27px; font-weight: 500; letter-spacing: -.8px; margin: 0 0 12px; }
+.alexis-landing .lp-focus-feature > div > p { max-width: 280px; color: var(--muted-ink); font-size: 13px; line-height: 1.7; }
+.alexis-landing .lp-focus-demo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px 20px; padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
+.alexis-landing .lp-focus-timer { display: flex; align-items: center; flex-direction: column; gap: 14px; }
+.alexis-landing .lp-focus-timer > span { font-size: 10px; color: var(--muted-ink); }
+.alexis-landing .lp-focus-timer strong { font-size: 44px; font-weight: 500; letter-spacing: -1.7px; font-variant-numeric: tabular-nums; }
+.alexis-landing .lp-focus-actions { display: flex; align-items: center; gap: 5px; }
+.alexis-landing .lp-focus-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 30px; padding: 5px 9px; color: var(--muted-ink); font-size: 10px; border-radius: 7px; }
+.alexis-landing .lp-focus-actions .lp-focus-start { background: var(--green); color: var(--brand-on); }
+.alexis-landing .lp-focus-actions button:hover { box-shadow: inset 0 0 0 1px var(--line-hover); }
+.alexis-landing .lp-focus-companion { min-width: 0; display: flex; flex-direction: column; align-items: center; }
+.alexis-landing .lp-companion-art { width: 105px; height: 105px; }
+.alexis-landing .lp-companion-art:hover { filter: brightness(1.05); }
+.alexis-landing .lp-companion-art .familiar-art { display: block; width: 100%; height: 100%; }
+.alexis-landing .lp-focus-demo .familiar-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.alexis-landing .lp-focus-companion > p { font-size: 9px; color: var(--muted-ink); text-align: center; min-height: 16px; margin: 2px 0 10px; }
+.alexis-landing .lp-companion-choices { display: flex; justify-content: center; gap: 4px; }
+.alexis-landing .lp-companion-choices button { display: grid; place-items: center; gap: 1px; width: 48px; padding: 4px 2px; border: 1px solid transparent; border-radius: 8px; color: var(--muted-ink); }
+.alexis-landing .lp-companion-choices button[aria-pressed="true"] { border-color: var(--green-border); background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-companion-choices .familiar-art { width: 28px; height: 28px; }
+.alexis-landing .lp-companion-choices button > span:last-child { font-size: 7px; }
+.alexis-landing .lp-focus-preview-note { grid-column: 1 / -1; text-align: center; font-size: 8px; color: var(--muted-ink); margin-top: 5px; }
+.alexis-landing .lp-focus-demo .cat-body { transform-origin: 60px 96px; }
+.alexis-landing .lp-focus-demo .cat-tail { transform-origin: 90px 81px; }
+.alexis-landing .lp-focus-demo .cat-head { transform-origin: 42px 88px; }
+.alexis-landing .lp-focus-demo .mushroom-cap { transform-origin: 60px 64px; }
+.alexis-landing .lp-focus-demo .spirit-body { transform-origin: 60px 65px; }
+.alexis-landing .lp-companion-art .cat-body { animation: lp-cat-breathe 6s ease-in-out infinite; }
+.alexis-landing .lp-companion-art .cat-tail { animation: lp-cat-tail 9s ease-in-out infinite; }
+.alexis-landing .lp-companion-art .mushroom-cap { animation: lp-cap-sway 8s ease-in-out infinite; }
+.alexis-landing .lp-companion-art .spirit-body { animation: lp-spirit-drift 7s ease-in-out infinite; }
+.alexis-landing .is-reacting .lp-companion-art .cat-head { animation: lp-cat-nuzzle 2.4s ease both; }
+.alexis-landing .is-reacting .lp-companion-art .mushroom-cap { animation-duration: 2.4s; }
+.alexis-landing .is-reacting .lp-companion-art .spirit-body { filter: brightness(1.15); animation-duration: 2.4s; }
+.alexis-landing .lp-focus-demo.is-running { animation: lp-focus-breathe 6s ease-in-out infinite; }
+.alexis-landing .lp-focus-demo.is-compact { padding: 12px; border: 0; background: transparent; gap: 9px 15px; min-height: 280px; }
+.alexis-landing .lp-focus-demo.is-compact .lp-focus-timer strong { font-size: 38px; }
+.alexis-landing .lp-focus-demo.is-compact .lp-focus-preview-note { font-size: 8px; max-width: 290px; justify-self: center; line-height: 1.5; }
+@keyframes lp-tile-drift { 0%,100% { transform: translateY(0) rotate(var(--tilt)); } 50% { transform: translateY(-3px) rotate(calc(var(--tilt) + 3deg)); } }
+@keyframes lp-preview-arrive { from { opacity: 0; translate: 0 5px; } to { opacity: 1; translate: 0 0; } }
+@keyframes lp-cat-breathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(1.035); } }
+@keyframes lp-cat-tail { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-5deg); } }
+@keyframes lp-cap-sway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+@keyframes lp-spirit-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes lp-cat-nuzzle { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-7deg); } }
+@keyframes lp-focus-breathe { 0%,100% { box-shadow: inset 0 0 0 1px transparent; } 50% { box-shadow: inset 0 0 0 1px var(--green-border); } }
+@media (max-width: 800px) {
+  .alexis-landing .lp-editorial-hero { padding-top: 135px; }
+  .alexis-landing .lp-mac-body { grid-template-columns: 128px minmax(0,1fr); }
+  .alexis-landing .lp-mac-sidebar { padding-inline: 10px; }
+  .alexis-landing .lp-mac-main { padding-inline: 20px; }
+  .alexis-landing .lp-focus-feature { grid-template-columns: 1fr; gap: 20px; }
+  .alexis-landing .lp-focus-feature > div > p { max-width: 420px; }
+}
+@media (max-width: 600px) {
+  .alexis-landing .lp-editorial-hero { padding-block: 120px 45px; gap: 35px; }
+  .alexis-landing .lp-editorial-hero h1 { font-size: clamp(28px,8vw,38px); letter-spacing: -1.1px; gap: 10px; margin-block: 22px; }
+  .alexis-landing .lp-hero-line { gap: 7px; }
+  .alexis-landing .lp-hero-tiles > span { width: 29px; height: 29px; border-radius: 8px; }
+  .alexis-landing .lp-hero-tiles svg { width: 16px; height: 16px; }
+  .alexis-landing .lp-hero-switch { width: 49px; height: 28px; padding-inline: 7px; margin: 0; }
+  .alexis-landing .lp-hero-switch svg { width: 10px; height: 10px; }
+  .alexis-landing .lp-hero-switch > span { width: 20px; height: 20px; }
+  .alexis-landing .lp-hero-switch[aria-checked="true"] > span { translate: 21px 0; }
+  .alexis-landing .lp-editorial-hero .lp-hero-copy > p { font-size: 13px; max-width: 300px; }
+  .alexis-landing .lp-editorial-hero .lp-button { font-size: 12px !important; padding-inline: 14px; }
+  .alexis-landing .lp-mac-titlebar { height: 36px; gap: 5px; padding-inline: 10px; font-size: 9px; }
+  .alexis-landing .lp-mac-titlebar small { display: none; }
+  .alexis-landing .lp-traffic-lights { min-width: 50px; gap: 4px; }
+  .alexis-landing .lp-traffic-lights i { width: 5px; height: 5px; }
+  .alexis-landing .lp-mac-titlebar button { width: 20px; height: 18px; }
+  .alexis-landing .lp-mac-body { grid-template-columns: 53px minmax(0,1fr); min-height: 325px; }
+  .alexis-landing .lp-mac-sidebar { padding: 15px 5px; align-items: center; }
+  .alexis-landing .lp-mac-sidebar > img { width: 25px; height: 25px; }
+  .alexis-landing .lp-mac-sidebar > div { gap: 8px; margin-top: 25px; }
+  .alexis-landing .lp-mac-sidebar button { justify-content: center; padding: 7px; }
+  .alexis-landing .lp-mac-sidebar button > span, .alexis-landing .lp-mac-sidebar > small, .alexis-landing .lp-mac-sidebar > p, .alexis-landing .lp-mac-profile small { display: none; }
+  .alexis-landing .lp-mac-main { padding: 16px 13px; }
+  .alexis-landing .lp-mac-toolbar { font-size: 8px; margin-bottom: 20px; }
+  .alexis-landing .lp-mac-view h3 { font-size: 20px; margin-bottom: 18px; }
+  .alexis-landing .lp-mac-kicker { font-size: 6px; }
+  .alexis-landing .lp-mac-question { font-size: 9px; padding: 10px; }
+  .alexis-landing .lp-mac-reply { gap: 6px; margin-top: 19px; }
+  .alexis-landing .lp-mac-reply img { width: 20px; height: 20px; }
+  .alexis-landing .lp-mac-reply p { font-size: 9px; line-height: 1.7; }
+  .alexis-landing .lp-mac-source { font-size: 6px; margin-left: 26px; }
+  .alexis-landing .lp-mac-composer { margin-top: 17px; padding: 9px; font-size: 8px; }
+  .alexis-landing .lp-mac-composer small { font-size: 7px; }
+  .alexis-landing .lp-mac-caption { flex-direction: column; align-items: center; gap: 10px; font-size: 10px; }
+  .alexis-landing .lp-mac-caption button { font-size: 9px; padding: 5px 6px; }
+  .alexis-landing .lp-mac-file { gap: 8px; padding-block: 17px; }
+  .alexis-landing .lp-mac-file b { font-size: 10px; }
+  .alexis-landing .lp-mac-file small { font-size: 8px; }
+  .alexis-landing .lp-mac-session { gap: 8px; font-size: 8px; }
+  .alexis-landing .lp-mac-session b { font-size: 9px; }
+  .alexis-landing .lp-mac-session small { font-size: 7px; }
+  .alexis-landing .lp-mac-week > span { padding-inline: 2px; }
+  .alexis-landing .lp-focus-feature { padding: 25px 19px; }
+  .alexis-landing .lp-focus-feature h3 { font-size: 23px; }
+  .alexis-landing .lp-focus-demo { gap: 10px; padding: 15px 9px; }
+  .alexis-landing .lp-focus-timer strong { font-size: 34px; }
+  .alexis-landing .lp-focus-timer > span { font-size: 8px; }
+  .alexis-landing .lp-companion-art { width: 87px; height: 87px; }
+  .alexis-landing .lp-companion-choices { gap: 2px; }
+  .alexis-landing .lp-companion-choices button { width: 39px; }
+  .alexis-landing .lp-companion-choices button > span:last-child { font-size: 6px; }
+  .alexis-landing .lp-focus-companion > p { font-size: 7px; }
+  .alexis-landing .lp-focus-preview-note { font-size: 7px; line-height: 1.6; }
+  .alexis-landing .lp-focus-demo.is-compact { padding: 5px 0; gap: 9px 5px; min-height: 245px; }
+  .alexis-landing .is-compact .lp-focus-timer strong { font-size: 27px !important; }
+  .alexis-landing .is-compact .lp-companion-art { width: 76px; height: 76px; }
+  .alexis-landing .is-compact .lp-companion-choices button { width: 31px; }
+  .alexis-landing .is-compact .lp-companion-choices button > span:last-child { display: none; }
+  .alexis-landing .is-compact .lp-focus-timer > span { font-size: 7px; }
+  .alexis-landing .is-compact .lp-focus-actions button { font-size: 8px; padding-inline: 6px; }
+}
+@media (max-width: 360px) { .alexis-landing .lp-editorial-hero h1 { font-size: 26px; } .alexis-landing .lp-hero-tiles > span { width: 25px; height: 25px; } }
+@media (prefers-reduced-motion: reduce) {
+  .alexis-landing .lp-hero-tiles > span, .alexis-landing .lp-mac-view, .alexis-landing .lp-focus-demo, .alexis-landing .lp-focus-demo * { animation: none !important; transition: none !important; }
+  .alexis-landing .lp-hero-switch > span { transition: none; }
+}
+.alexis-landing .lp-companion-art > .familiar-art, .alexis-landing .lp-mode-preview { animation: lp-preview-arrive .3s ease both; }
+.alexis-landing .lp-tool-card { transition: border-color .2s ease; }
+.alexis-landing .lp-tool-card:hover { border-color: var(--line-hover); }
+@media (prefers-reduced-motion: reduce) { .alexis-landing .lp-mode-preview, .alexis-landing .lp-tool-card { animation: none; transition: none; } }

@@ -1,0 +1,41 @@
+/* A single soft field of colour, without a glass shell or surrounding halo. */
+.inline-voice.reference-voice .voice-inspiration {
+  --voice-breathe-duration: 6s;
+  --voice-cool: #9bbbf3;
+  --voice-warm: #8ee6e8;
+  width: 270px; height: 270px; margin-bottom: 24px;
+  animation: voice-field-breathe var(--voice-breathe-duration) ease-in-out infinite;
+}
+:root[data-accent="purple"] .voice-inspiration { --voice-cool: #b8a4ee; --voice-warm: #b4d9f4; }
+:root[data-accent="amber"] .voice-inspiration { --voice-cool: #e5c2a1; --voice-warm: #f2daab; }
+:root[data-accent="chrome"] .voice-inspiration { --voice-cool: #afbfd5; --voice-warm: #c1d9dc; }
+.voice-gradient-field {
+  position: absolute; inset: 24px; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 68% 33%, var(--voice-warm) 0%, transparent 61%),
+    radial-gradient(ellipse at 32% 66%, var(--voice-cool) 0%, transparent 66%),
+    radial-gradient(ellipse at 52% 51%, color-mix(in srgb, var(--green) 24%, var(--voice-warm)) 0%, transparent 68%);
+  filter: blur(15px);
+  border-radius: 46% 54% 52% 48%;
+  opacity: .82;
+  animation: voice-colour-drift 10s ease-in-out infinite alternate;
+}
+.voice-bot-logo { position: relative; width: 82px; height: 82px; object-fit: contain; pointer-events: none; z-index: 2; opacity: .75; }
+.reference-voice.voice-speaking .voice-inspiration { --voice-breathe-duration: 3.2s; }
+.reference-voice.voice-listening .voice-inspiration { --voice-breathe-duration: 4.5s; }
+@keyframes voice-field-breathe { 0%, 100% { scale: .94; translate: 0 2px; } 50% { scale: 1.06; translate: 0 -4px; } }
+@keyframes voice-colour-drift { from { rotate: -8deg; opacity: .72; } to { rotate: 10deg; opacity: .9; } }
+@media (max-width: 760px) {
+  .inline-voice.reference-voice .voice-inspiration { width: 226px; height: 226px; margin-bottom: 16px; }
+  .reference-voice .voice-gradient-field { inset: 20px; filter: blur(13px); }
+  .reference-voice .voice-bot-logo { width: 70px; height: 70px; }
+}
+@media (max-height: 620px) {
+  .inline-voice.reference-voice .voice-inspiration { width: 180px; height: 180px; margin-bottom: 10px; }
+  .reference-voice .voice-gradient-field { inset: 16px; }
+  .reference-voice .voice-bot-logo { width: 58px; height: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .inline-voice.reference-voice .voice-inspiration, .reference-voice .voice-gradient-field { animation: none; }
+}
+

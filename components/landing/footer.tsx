@@ -1,14 +1,14 @@
-import React from "react";
-
+"use client";
+import Link from "next/link";
+import { AlexisLogo } from "@/components/icons/AlexisLogo";
+import { Leaf } from "lucide-react";
 export default function Footer() {
   return (
-    <div className="w-screen bg-mauve-200 p-8 flex flex-col items-center justify-center border-t gap-2">
-      <span className="text-mauve-1200">
-      Built by a blend of human creativity and AI wizardry ❤️ in Tunis 🇹🇳
+    <footer className="lp-container lp-footer flex flex-col items-center justify-center gap-2 py-6 text-sm text-muted-foreground">
+      <span>
+        {" "}
+        © 2024. All rights reserved. 
       </span>
-      <span className="text-mauve-1200 text-sm">
-      Still figuring out what to write here—stay tuned ✌️
-      </span>
-    </div>
+    </footer>
   );
 }

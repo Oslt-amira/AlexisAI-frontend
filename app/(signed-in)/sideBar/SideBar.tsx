@@ -31,9 +31,7 @@ export default function SideBar({ sheet }: any) {
           <div className="flex flex-row items-center justify-between pl-1 pt-2">
             <div className="flex flex-row">
               <AlexisLogo color="#65636D" width="28" height="30"></AlexisLogo>
-              <h2 className=" font-semibold text-mauve-1100 text-xl ml-2 ">
-                Alexis
-              </h2>
+             
             </div>
 
             <Button

@@ -1,79 +1,143 @@
 "use client";
-
-import React from "react";
-import PricingItem from "./pricingItem";
-import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+import { useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Check, Sparkles, X } from "lucide-react";
+import { AlexisLogo } from "@/components/icons/AlexisLogo";
+import * as Dialog from "@radix-ui/react-dialog";
 
 export default function Pricing() {
-  const [activeTab, setActiveTab] = React.useState<
-    "monthly" | "halfYearly" | "yearly"
-  >("monthly");
-  const pricingData = [
-    {
-      label: "Basic",
-      prices: ["Free"],
-      description: `Start your learning journey and explore Alexis  with this free trial.`,
-      benefits: [
-        "10 available questions",
-        "Instant chat in Q&A mode",
-      ],
-      button: "Start for Free",
-      isRecommended: false,
-    },
-    {
-      label: "Pro",
-      prices: ["49.90 TND/Month", "250 TND/6Months", "450 TND/Year"],
-      description: `Unlock the full potential of Alexis and enjoy an ultimate learning experience.`,
-      benefits: [
-        "Instant chat in Q&A mode",
-        "MCQ, Problem Solving, and Writing",
-        "Course libraries",
-        "PDF integration",
-        "Focus mode",
-        "Revision planner",
-      ],
-      button: "Sign Up",
-      isRecommended: true,
-    },
-  ];
-  
+  const [plus, setPlus] = useState(false);
+  const landingRoot = useRef<HTMLDivElement>(null);
   return (
-    <section id="Pricing" className="w-full h-auto flex flex-col gap-6 items-center pt-16">
-      <div className="flex flex-col pb-6">
-        <h2 className="text-center py-6 text-4xl font-medium text-mauve-1200 leading-none tracking-tighter sm:text-5xl md:text-6xl capitalize translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          Pricing
-        </h2>
-        <p className="text-center max-w-xs mx-auto text-mauve-1000 text-base sm:max-w-lg sm:text-xl md:text-2xl md:max-w-xl lg:text-lg lg:max-w-2xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:30ms]">
-        Unlock Alexis&apos; full potential .<br />
-        Our flexible pricing options make it easy to upgrade your learning journey .
-        </p>
-      </div>
-      <Tabs defaultValue="monthly" onValueChange={(e: any) => setActiveTab(e)}>
-        <TabsList className="bg-purple-400">
-          <TabsTrigger
-            className="hover:text-purple-1000 text-purple-800 data-[state=active]:text-purple-1100"
-            value="monthly"
-          >
-            Monthly
-          </TabsTrigger>
-          <TabsTrigger
-            className="hover:text-purple-1000 text-purple-800 data-[state=active]:text-purple-1100"
-            value="halfYearly"
-          >
-            Semiannually
-          </TabsTrigger>
-          <TabsTrigger
-            className="hover:text-purple-1000 text-purple-800 data-[state=active]:text-purple-1100"
-            value="yearly"
-          >
-            Annually
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
-      <div className="flex flex-col md:flex-wrap md:flex-row md:justify-center gap-6 items-end">
-        <PricingItem data={pricingData[0]} activeTab={activeTab} />
-        <PricingItem data={pricingData[1]} activeTab={activeTab} />
-      </div>
-    </section>
+    <div ref={landingRoot}>
+      <section
+        id="Pricing"
+        className="lp-container lp-section lp-pricing lp-growth-pricing"
+      >
+        <div className="lp-pricing-heading">
+          <span className="lp-pricing-label">PRICING</span>
+          <h2>A plan for every chapter.</h2>
+          <p>
+            Start with a little curiosity. Make room for more when you need it.
+          </p>
+        </div>
+        <div className="lp-growth-shell">
+          <article className="lp-growth-plan">
+            <span className="lp-growth-icon">
+              <BookOpen size={18} />
+            </span>
+            <h3>Alexis Free</h3>
+            <p>A good place to begin.</p>
+            <div className="lp-growth-price">
+              $0<span>/ month</span>
+            </div>
+            <div className="lp-growth-inclusions">
+              <h4>What’s included</h4>
+              <ul>
+                {[
+                  "Upload up to 20 Documents",
+                  "Limited conversations",
+                  "Explore the study workspace",
+                  ,
+                ].map((feature) => (
+                  <li key={feature}>
+                    <Check size={13} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link href="/signIn" className="lp-growth-button">
+              Start Learning <ArrowRight size={14} />
+            </Link>
+          </article>
+          <article className="lp-growth-plan is-featured">
+            <div className="lp-growth-card-top">
+              <span className="lp-growth-icon is-plus">
+                <AlexisLogo width={36} height={36} />
+              </span>
+              <span className="lp-popular">1 month free trial</span>
+            </div>
+            <h3>Alexis Plus</h3>
+            <p>For everything you’re getting into.</p>
+            <div className="lp-growth-price">
+              $12<span>/ month</span>
+            </div>
+            <div className="lp-growth-inclusions">
+              <h4>Everything in Free, plus</h4>
+              <ul>
+                {[
+                  "Upload up to 200 documents",
+                  "Unlimited conversations",
+                  "Sync with Google Calendar & Classroom",
+                  "Personalized plans & progress tracking",
+                ].map((feature) => (
+                  <li key={feature}>
+                    <Check size={13} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button className="lp-growth-button" onClick={() => setPlus(true)}>
+              Explore Plus <ArrowRight size={14} />
+            </button>
+            <small>
+              Free for 1 month, then $12/month. Cancel before your trial ends.
+            </small>
+          </article>
+        </div>
+      </section>
+      <Dialog.Root open={plus} onOpenChange={setPlus}>
+        <Dialog.Portal container={landingRoot.current}>
+          <Dialog.Overlay className="lp-dialog-overlay" />
+          <Dialog.Content className="lp-plus-dialog">
+            <Dialog.Close
+              className="lp-dialog-close"
+              aria-label="Close Plus preview"
+            >
+              <X size={19} />
+            </Dialog.Close>
+            <div className="upgrade-modal-content">
+              <span className="emblem">
+                <AlexisLogo width={36} height={36} />
+              </span>
+              <Dialog.Title>Upgrade to Alexis Plus</Dialog.Title>
+              <Dialog.Description>
+                Everything you need to study smarter.
+              </Dialog.Description>
+              <div className="plan-price">
+                $12<span>/ month</span>
+              </div>
+              <ul>
+                {[
+                  "Upload up to 200 documents",
+                  "Unlimited conversations",
+                  "Integrate with Google Calendar and Classroom",
+                  "Personalized study plans and progress tracking",
+                ].map((feature) => (
+                  <li key={feature}>
+                    <Check size={16} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="demo-note">
+                <p>
+                  Free for 1 month, then $12/month. Cancel anytime before your
+                  trial ends.
+                </p>
+              </div>
+              <Link href="/demo" className="primary-button full-width">
+                Try Plus in the demo <ArrowRight size={15} />
+              </Link>
+              <p className="modal-footnote">
+                No subscription is started in the demo.
+              </p>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </div>
   );
 }

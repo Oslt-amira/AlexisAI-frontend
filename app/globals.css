@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* The supplied dark tile becomes ivory on dark surfaces, retaining its silhouette. */
+.alexis-logo { filter: none; }
+.dark .alexis-logo,
+:root[data-theme="dark"] .alexis-logo { filter: grayscale(1) invert(1); }
+:root[data-theme="light"] .alexis-logo { filter: none; }
+.voice-bot-logo { filter: brightness(0); }
+.dark .voice-bot-logo,
+:root[data-theme="dark"] .voice-bot-logo { filter: brightness(0) invert(1); }
+:root[data-theme="light"] .voice-bot-logo { filter: brightness(0); }
  
 @layer base {
   :root {
@@ -13,8 +23,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 159 52% 12%;
+    --primary-foreground: 48 36% 95%;
  
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -30,9 +40,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 106 15% 57%;
  
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
  
   .dark {
@@ -85,4 +95,3 @@
   scrollbar-width: thin; /* "auto" or "thin" */
   scrollbar-color: #00000010 #ffffff10; /* scroll thumb and track */
 }
-

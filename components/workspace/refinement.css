@@ -1,0 +1,244 @@
+/* Shared final treatment: the navigation stays flush; only the canvas is inset. */
+.alexis-app.inset-workspace {
+  --reading: #50564a;
+  --secondary-text: #727b67;
+  --subtle-text: #828b76;
+  background: #f2f2ed;
+}
+.inset-workspace > .sidebar {
+  top: 0;
+  height: 100dvh;
+  border-radius: 0;
+  background: #f2f2ed;
+}
+.inset-workspace > .workspace-main {
+  margin: 16px 16px 16px 0;
+  min-height: calc(100dvh - 32px);
+  border: 1px solid #e7e9e0;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 3px 16px #1c2c1003;
+}
+.inset-workspace .page-content,
+.inset-workspace.view-discuss .page-content,
+.inset-workspace .discuss-layout,
+.inset-workspace .discuss-main {
+  min-height: calc(100dvh - 32px);
+}
+.inset-workspace .discuss-welcome h1 {
+  color: #252b20;
+  font-weight: 600;
+  letter-spacing: -1.6px;
+}
+.inset-workspace .discuss-welcome > p,
+.greeting-line,
+.inset-workspace .greeting-line,
+.inset-workspace .nav-item,
+.inset-workspace .recent-chats > button,
+.inset-workspace .materials-caption,
+.inset-workspace .material-info p,
+.inset-workspace .material-info > span,
+.inset-workspace .materials-library,
+.document-row .file-details p,
+.document-row .document-kind,
+.useful-tools p,
+.tool-data-note,
+.tools-demo-caption,
+.tool-source-bar label,
+.tool-source-bar > span,
+.workspace-view-controls > button,
+.composer-send > span,
+.context-selector,
+.context-selector select,
+.inset-workspace .context-selector select {
+  color: var(--secondary-text);
+}
+.inset-workspace .composer textarea {
+  color: #39432e;
+}
+.inset-workspace .composer textarea::placeholder,
+.command-input > input::placeholder {
+  color: #7e8872;
+}
+.inset-workspace .prompt-starters > button,
+.useful-tool-action,
+.command-results small,
+.command-results h3,
+.command-footer,
+.command-footer kbd,
+.sync-note,
+.sync-description,
+.muted {
+  color: var(--secondary-text);
+}
+.inset-workspace .chat-message.assistant p {
+  color: var(--reading);
+}
+.inset-workspace .chat-message.assistant h2,
+.useful-tools h2 {
+  color: #2b3423;
+}
+.inset-workspace .nav-item.active {
+  color: #2f4223;
+  background: #e4e9dc;
+}
+.inset-workspace .nav-caption,
+.inset-workspace .recent-caption {
+  color: #7c866e;
+}
+.document-row .document-kind,
+.document-row .file-details p,
+.material-info p,
+.inset-workspace .material-info p,
+.tools-demo-caption,
+.tool-data-note,
+.command-results small {
+  font-size: 10px;
+}
+.inset-workspace .material-info > span {
+  font-size: 8px;
+}
+.inset-workspace .material-info h3 {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4c5a3f;
+}
+.inset-workspace .materials-panel {
+  border-radius: 18px;
+}
+.inset-workspace .material-info > span > small {
+  color: #6e7b5f;
+  font-size: 7px;
+}
+.inset-workspace .sidebar-bottom {
+  margin-top: auto;
+}
+.workspace-view-controls > button {
+  min-height: 34px;
+  border-radius: 9px;
+}
+.inset-workspace .icon-button {
+  min-width: 30px;
+  min-height: 30px;
+}
+.inset-workspace .materials-title h2 {
+  color: #485a3a;
+  font-size: 13px;
+}
+.inset-workspace .page-heading {
+  border-radius: 18px;
+}
+.inset-workspace .useful-tools > button,
+.inset-workspace .schedule-card,
+.inset-workspace .settings-card {
+  border-radius: 16px;
+}
+.alexis-app :is(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid #567945;
+  outline-offset: 3px;
+}
+.workspace-view-controls > button:hover,
+.inset-workspace .nav-item:hover {
+  transition-duration: 160ms;
+}
+.command-results > div > button.highlighted {
+  background: #eaf1df;
+  border-color: #d9e5c9;
+}
+.command-results b,
+.command-input > input {
+  color: #52683e;
+}
+.command-results .command-enter {
+  color: #7b9563;
+}
+.inset-workspace.is-focused {
+  background: #fff;
+}
+.inset-workspace.is-focused > .workspace-main {
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+.focus-breathing-glow {
+  position: fixed;
+  left: 50%;
+  bottom: -260px;
+  width: 560px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #174e3580 0%,
+    #4d88604d 30%,
+    #81ad7821 48%,
+    transparent 70%
+  );
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  filter: blur(15px);
+  pointer-events: none;
+  z-index: 0;
+  animation: focus-glow-breathe 9s ease-in-out infinite;
+}
+.is-focused .page-content {
+  position: relative;
+  z-index: 1;
+}
+.is-focused .chat-composer-wrap {
+  background: linear-gradient(transparent, #ffffffed 16%);
+}
+@keyframes focus-glow-breathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.88);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.14);
+    opacity: 0.9;
+  }
+}
+@media (max-width: 760px) {
+  .inset-workspace > .workspace-main {
+    margin: 10px 10px 10px 0;
+    min-height: calc(100dvh - 20px);
+    border-radius: 22px;
+  }
+  .inset-workspace .page-content,
+  .inset-workspace.view-discuss .page-content,
+  .inset-workspace .discuss-layout,
+  .inset-workspace .discuss-main {
+    min-height: calc(100dvh - 20px);
+  }
+  .inset-workspace > .sidebar {
+    height: 100dvh;
+    top: 0;
+  }
+  .workspace-view-controls {
+    right: 14px;
+    top: 16px;
+  }
+  .workspace-view-controls > button {
+    min-height: 34px;
+  }
+  .focus-breathing-glow {
+    width: 420px;
+    height: 420px;
+    bottom: -210px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-breathing-glow {
+    animation: none;
+    opacity: 0.6;
+  }
+  .alexis-app *,
+  .alexis-app *::before,
+  .alexis-app *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

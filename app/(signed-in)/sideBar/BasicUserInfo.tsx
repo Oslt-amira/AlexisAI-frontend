@@ -17,7 +17,7 @@ export const BasicUserInfo: React.FC<InfoProps> = ({ user }) => {
       <div className="flex items-center px-1 h-full w-full justify-between mt-2 ">
         <div className="flex place-items-center mr-4 col-span-9   ">
 
-           {/* <UserAvatar user={user} /> */}
+          <UserAvatar user={user} />
           <div className="pl-2 w-full">
             <div className=" font-bold text-xs  text-mauve-1100 min-w-full ">
               {user?.name}

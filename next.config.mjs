@@ -1,6 +1,8 @@
 import {withSentryConfig} from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Allow a preview server to avoid sharing build output with other dev ports.
+  distDir: process.env.ALEXIS_PREVIEW_DIST || ".next",
   output: "standalone",
   reactStrictMode: false,
 };
@@ -11,6 +13,8 @@ export default withSentryConfig(nextConfig, {
 
 // Suppresses source map uploading logs during build
 silent: true,
+// Local UI previews can build without deployment-only Sentry credentials.
+dryRun: !process.env.SENTRY_AUTH_TOKEN,
 org: "alexis-1d",
 project: "alexis-front",
 }, {
