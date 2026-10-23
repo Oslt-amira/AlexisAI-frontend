@@ -54,11 +54,9 @@ export default function Pricing() {
           <article className="lp-growth-plan is-featured">
             <div className="lp-growth-card-top">
               <span className="lp-growth-icon is-plus">
-                <Sparkles size={18} />
+                <AlexisLogo width={36} height={36} />
               </span>
-              <span className="lp-popular">
-                <Sparkles size={10} /> A little more room
-              </span>
+              <span className="lp-popular">1 month free trial</span>
             </div>
             <h3>Alexis Plus</h3>
             <p>For everything you’re getting into.</p>

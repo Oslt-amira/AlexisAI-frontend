@@ -152,7 +152,7 @@
 .alexis-landing .lp-growth-icon.is-plus { position: relative; isolation: isolate; color: var(--green-ink); background: var(--green-soft); box-shadow: 0 0 16px var(--green-soft); }
 .alexis-landing .lp-growth-icon.is-plus::before { content: ""; z-index: -1; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 45deg,#b2daf5,#ddc2f3,#f5e0ba,#c2e5d1,#b2daf5); filter: blur(7px); opacity: .65; animation: lp-plan-aura 10s linear infinite; }
 .alexis-landing .lp-growth-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.alexis-landing .lp-popular { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 100px; padding: 5px 8px; font-size: 8px; color: var(--body-ink); }
+.alexis-landing .lp-popular { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 100px; padding: 5px 8px; font-size: 10px; color: var(--body-ink); }
 .alexis-landing .lp-growth-plan h3 { margin: 0 0 9px; font-size: 20px; font-weight: 500; letter-spacing: -.4px; }
 .alexis-landing .lp-growth-plan > p { color: var(--muted-ink); font-size: 12px; line-height: 1.6; }
 .alexis-landing .lp-growth-price { display: flex; align-items: baseline; gap: 4px; margin-block: 23px; font-size: 43px; font-weight: 500; letter-spacing: -1.8px; }
