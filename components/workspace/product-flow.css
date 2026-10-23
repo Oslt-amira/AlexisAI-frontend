@@ -493,7 +493,10 @@
   scrollbar-gutter: stable;
 }
 .resource-group {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+}
+.resource-group-heading {
+  margin-bottom: 18px;
 }
 .resource-group:last-child {
   margin-bottom: 0;

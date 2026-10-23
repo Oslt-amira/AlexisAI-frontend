@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Keyboard, Mic, MicOff, Send, Volume2, VolumeX } from "lucide-react";
 import { demoAnswer, type StudyFile } from "./demo-data";
+import "./voice-inspiration.css";
 
 type RecognitionResultEvent = {
   results: {
@@ -128,7 +130,7 @@ export default function VoiceAssistant({
       };
       utterance.onboundary = (event) => {
         if (!mountedRef.current || event.name !== "word") return;
-        orbRef.current?.style.setProperty("--voice-pulse", "1.12");
+        orbRef.current?.style.setProperty("--voice-pulse", "1.035");
         clearTimeout(pulseTimer.current);
         pulseTimer.current = setTimeout(
           () => orbRef.current?.style.setProperty("--voice-pulse", "1"),
@@ -221,18 +223,24 @@ export default function VoiceAssistant({
             : "What’s on your mind?";
   return (
     <section
-      className={`inline-voice voice-${phase}`}
+      className={`inline-voice reference-voice voice-${phase}`}
       aria-label="Voice conversation"
     >
       <div className="inline-voice-center">
-        <div className="voice-halo-orb" ref={orbRef} aria-hidden="true">
-          <span className="orb-aura" />
-          <span className="orb-ring orb-ring-one" />
-          <span className="orb-ring orb-ring-two" />
-          <span className="orb-ring orb-ring-three" />
-          <span className="orb-core">
-            <img src="/brand/emblem.svg" alt="" />
-          </span>
+        <div
+          className="voice-halo-orb voice-inspiration"
+          ref={orbRef}
+          aria-hidden="true"
+        >
+          <span className="voice-gradient-field" />
+          <Image
+            className="voice-bot-logo"
+            src="/brand/logo%20bot.svg"
+            alt=""
+            width={142}
+            height={142}
+            draggable={false}
+          />
         </div>
         <p className="voice-phase-label" role="status">
           {phase === "speaking"
@@ -244,29 +252,7 @@ export default function VoiceAssistant({
                 : "Alexis is here"}
         </p>
         <h2>{status}</h2>
-        <div
-          className={`user-voice-activity ${phase === "listening" ? "is-listening" : ""}`}
-          role="status"
-        >
-          <Mic size={14} />
-          <span>
-            {phase === "listening"
-              ? transcript
-                ? "You’re speaking"
-                : "Listening for your voice"
-              : "Tap to talk. Take your time."}
-          </span>
-          {phase === "listening" && (
-            <span
-              className={`user-speech-bars ${transcript ? "has-speech" : ""}`}
-              aria-hidden="true"
-            >
-              {[0, 1, 2, 3, 4].map((i) => (
-                <i key={i} />
-              ))}
-            </span>
-          )}
-        </div>
+
         {transcript && <p className="inline-user-transcript">“{transcript}”</p>}
         {response && (
           <details className="inline-voice-transcript">
@@ -311,7 +297,7 @@ export default function VoiceAssistant({
             aria-pressed={phase === "listening"}
             onClick={listen}
           >
-            {phase === "idle" ? <Mic size={24} /> : <MicOff size={24} />}
+            {phase === "idle" ? <Mic size={18} /> : <MicOff size={18} />}
           </button>
           <button
             className="voice-secondary-control"
@@ -320,6 +306,29 @@ export default function VoiceAssistant({
           >
             <Keyboard size={20} />
           </button>
+        </div>
+        <div
+          className={`user-voice-activity mt-3 ${phase === "listening" ? "is-listening" : ""}`}
+          role="status"
+        >
+          <Mic size={14} />
+          <span>
+            {phase === "listening"
+              ? transcript
+                ? "You’re speaking"
+                : "Listening for your voice"
+              : "Tap to talk. Take your time."}
+          </span>
+          {phase === "listening" && (
+            <span
+              className={`user-speech-bars ${transcript ? "has-speech" : ""}`}
+              aria-hidden="true"
+            >
+              {[0, 1, 2, 3, 4].map((i) => (
+                <i key={i} />
+              ))}
+            </span>
+          )}
         </div>
       </footer>
     </section>

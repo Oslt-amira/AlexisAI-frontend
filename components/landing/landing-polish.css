@@ -1,0 +1,374 @@
+/* Display-only platform illustration; appearance controls live outside it. */
+.alexis-landing .lp-static-workspace { pointer-events: none; user-select: none; }
+.alexis-landing .lp-preview-placeholder { min-height: 61px; font-size: 11px; line-height: 1.6; color: var(--muted-ink); }
+
+/* The hero mirrors the platform's Discuss workspace. */
+.alexis-landing .lp-platform-preview .lp-mac-body { min-height: 440px; background: var(--surface-soft); }
+.alexis-landing .lp-platform-preview .lp-mac-sidebar { gap: 7px; padding: 17px 13px 14px; border: 0; }
+.alexis-landing .lp-platform-preview .lp-mac-sidebar > div { display: block; margin: 0; }
+.alexis-landing .lp-platform-preview .lp-mac-sidebar .lp-preview-brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: 17px; }
+.alexis-landing .lp-preview-brand button { padding: 0; }
+.alexis-landing .lp-preview-brand button:last-child { padding: 5px; }
+.alexis-landing .lp-platform-preview .lp-preview-new { border: 1px solid var(--line); background: var(--surface); padding: 9px; margin-bottom: 6px; color: var(--ink); }
+.alexis-landing .lp-mac-sidebar nav { display: grid; gap: 5px; }
+.alexis-landing .lp-mac-sidebar nav button { width: 100%; }
+.alexis-landing .lp-mac-sidebar nav button:disabled { cursor: default; opacity: .6; background: transparent; }
+.alexis-landing .lp-mac-sidebar nav small { margin-left: auto; font-size: 8px; }
+.alexis-landing .lp-platform-preview .lp-preview-chats { border-top: 1px solid var(--line); margin-top: 13px !important; padding-top: 17px; color: var(--muted-ink); font-size: 9px; }
+.alexis-landing .lp-preview-chats > span { display: flex; align-items: center; justify-content: space-between; margin: 0 5px 18px; }
+.alexis-landing .lp-preview-chats p { display: flex; align-items: center; gap: 5px; font-size: 9px; margin: 18px 0 10px; white-space: nowrap; }
+.alexis-landing .lp-preview-chats small { margin-left: auto; font-size: 8px; }
+.alexis-landing .lp-preview-chats > a { display: block; padding: 5px 0 5px 12px; margin-left: 12px; border-left: 1px solid var(--line); font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.alexis-landing .lp-platform-preview .lp-mac-profile { margin-top: auto; padding: 15px 4px 0; }
+.alexis-landing .lp-mac-profile img { border-radius: 50%; object-fit: cover; }
+.alexis-landing .lp-platform-preview .lp-preview-profile-copy { display: grid; gap: 2px; width: auto; height: auto; border-radius: 0; background: transparent; color: var(--ink); }
+.alexis-landing .lp-preview-profile-copy b { font-size: 9px; font-weight: 500; }
+.alexis-landing .lp-preview-profile-copy small { font-size: 8px; }
+.alexis-landing .lp-platform-preview .lp-mac-main { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 17px 19px; margin: 8px 8px 8px 0; }
+.alexis-landing .lp-platform-preview .lp-mac-toolbar { justify-content: flex-end; gap: 13px; margin: 0; min-height: 22px; }
+.alexis-landing .lp-mac-toolbar > a, .alexis-landing .lp-mac-toolbar > button { display: inline-flex; align-items: center; gap: 5px; font-size: 8px; color: var(--muted-ink); }
+.alexis-landing .lp-mac-toolbar > button:hover, .alexis-landing .lp-mac-toolbar > a:hover { color: var(--ink); }
+.alexis-landing .lp-mac-toolbar kbd { border: 1px solid var(--line); border-radius: 3px; padding: 1px 3px; font-size: 7px; }
+.alexis-landing .lp-mac-toolbar small { font-size: 7px; background: var(--green-soft); padding: 1px 3px; border-radius: 3px; color: var(--green-ink); }
+.alexis-landing .lp-preview-chat-layout { display: grid; min-height: 350px; align-items: center; }
+.alexis-landing .lp-preview-welcome { width: 100%; max-width: 590px; margin: auto; text-align: center; padding: 25px 5px 45px; min-width: 0; }
+.alexis-landing .lp-preview-welcome h3 { font-size: clamp(20px,2.3vw,29px); line-height: 1.3; font-weight: 600; letter-spacing: -.8px; margin: 0 0 13px; }
+.alexis-landing .lp-preview-welcome > p { font-size: 10px; color: var(--muted-ink); margin: 0 0 24px; }
+.alexis-landing .lp-platform-composer { padding: 14px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); box-shadow: 0 3px 13px #00000006; text-align: left; }
+.alexis-landing .lp-platform-composer:focus-within { border-color: var(--green-border); }
+.alexis-landing .lp-platform-composer textarea { display: block; width: 100%; min-height: 61px; resize: none; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 11px; line-height: 1.6; padding: 0; }
+.alexis-landing .lp-platform-composer textarea::placeholder { color: var(--muted-ink); }
+.alexis-landing .lp-preview-composer-bottom { display: flex; align-items: center; gap: 10px; margin-top: 10px; color: var(--muted-ink); }
+.alexis-landing .lp-preview-composer-bottom a, .alexis-landing .lp-preview-composer-bottom button { display: inline-flex; align-items: center; gap: 5px; }
+.alexis-landing .lp-preview-context { font-size: 9px; }
+.alexis-landing .lp-preview-send { display: flex; align-items: center; gap: 11px; margin-left: auto; }
+.alexis-landing .lp-preview-send button { justify-content: center; width: 27px; height: 27px; border-radius: 50%; background: var(--green); color: var(--brand-on); transition: background .2s; }
+.alexis-landing .lp-preview-send button:disabled { background: var(--surface-muted); color: var(--muted-ink); opacity: .55; }
+.alexis-landing .lp-platform-composer .chat-mode-picker { position: relative; }
+.alexis-landing .lp-platform-composer .chat-mode-trigger { font-size: 9px; color: var(--body-ink); }
+.alexis-landing .lp-platform-composer .chat-mode-menu { position: absolute; bottom: 28px; left: -10px; width: 210px; z-index: 5; padding: 5px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 12px 30px #00000014; }
+.alexis-landing .lp-platform-composer .chat-mode-menu button { width: 100%; padding: 8px; text-align: left; border-radius: 6px; gap: 9px; color: var(--body-ink); }
+.alexis-landing .lp-platform-composer .chat-mode-menu button:hover, .alexis-landing .lp-platform-composer .chat-mode-menu button[aria-checked="true"] { background: var(--hover); }
+.alexis-landing .lp-platform-composer .chat-mode-menu button > span { flex: 1; }
+.alexis-landing .lp-platform-composer .chat-mode-menu b { display: block; font-size: 10px; font-weight: 500; }
+.alexis-landing .lp-platform-composer .chat-mode-menu small { display: block; font-size: 8px; margin-top: 3px; color: var(--muted-ink); }
+.alexis-landing .lp-preview-starters { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+.alexis-landing .lp-preview-starters button { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; color: var(--body-ink); font-size: 8px; transition: background .2s,translate .2s; }
+.alexis-landing .lp-preview-starters button:hover { background: var(--hover); translate: 0 -2px; }
+.alexis-landing .lp-preview-chat-layout.has-activity { grid-template-columns: minmax(0,1fr) 155px; gap: 17px; }
+.alexis-landing .has-activity .lp-preview-welcome h3 { font-size: 23px; }
+.alexis-landing .lp-preview-activity { border-left: 1px solid var(--line); padding-left: 14px; align-self: stretch; margin-top: 20px; }
+.alexis-landing .lp-preview-activity h4 { font-size: 11px; margin: 0 0 6px; }
+.alexis-landing .lp-preview-activity p, .alexis-landing .lp-preview-activity small { font-size: 8px; color: var(--muted-ink); line-height: 1.6; }
+.alexis-landing .lp-preview-activity h5 { display: flex; gap: 5px; align-items: center; font-size: 9px; margin: 23px 0 10px; }
+.alexis-landing .lp-preview-activity > span { display: block; font-size: 9px; margin-top: 12px; }
+.alexis-landing .lp-preview-activity small { display: block; margin-top: 4px; }
+.alexis-landing .lp-platform-preview .is-sidebar-collapsed .lp-mac-body { grid-template-columns: 53px minmax(0,1fr); }
+.alexis-landing .is-sidebar-collapsed .lp-mac-sidebar { align-items: center; padding-inline: 5px; }
+.alexis-landing .is-sidebar-collapsed .lp-preview-brand { flex-direction: column; gap: 8px; }
+.alexis-landing .is-sidebar-collapsed .lp-mac-sidebar button > span, .alexis-landing .is-sidebar-collapsed .lp-mac-sidebar nav small, .alexis-landing .is-sidebar-collapsed .lp-mac-sidebar .lp-preview-chats, .alexis-landing .is-sidebar-collapsed .lp-preview-profile-copy { display: none; }
+.alexis-landing .lp-platform-preview .lp-palette-bar { max-width: 690px; margin: 25px auto 0; padding: 14px 17px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-soft); gap: 20px; }
+.alexis-landing .lp-palette-bar .lp-palette-copy { display: flex; gap: 9px; align-items: center; color: var(--body-ink); font-size: 11px; }
+.alexis-landing .lp-palette-copy > svg { color: var(--green-ink); }
+.alexis-landing .lp-palette-copy small { display: block; font-size: 9px; margin-top: 4px; color: var(--muted-ink); }
+.alexis-landing .lp-palette-bar > [role="group"] { padding: 4px; border: 1px solid var(--line); background: var(--surface-muted); border-radius: 12px; gap: 3px; }
+.alexis-landing .lp-palette-bar button { border-radius: 8px; padding: 8px 9px; gap: 6px; transition: background .25s,box-shadow .25s,color .25s; }
+.alexis-landing .lp-palette-bar button[aria-pressed="true"] { background: var(--surface); border-color: var(--line); box-shadow: 0 2px 5px #00000007; }
+.alexis-landing .lp-palette-bar button:hover { background: var(--surface); }
+.alexis-landing .lp-palette-bar button i { display: grid; place-items: center; width: 16px; height: 16px; background: var(--swatch); color: #fff; font-style: normal; }
+.alexis-landing .lp-platform-preview button:focus-visible, .alexis-landing .lp-platform-preview a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 800px) {
+  .alexis-landing .lp-preview-chat-layout.has-activity { grid-template-columns: minmax(0,1fr); }
+  .alexis-landing .lp-preview-activity { border: 0; border-top: 1px solid var(--line); padding: 12px 0 0; margin: 0; }
+  .alexis-landing .lp-platform-preview .lp-palette-bar { gap: 12px; }
+}
+@media (max-width: 600px) {
+  .alexis-landing .lp-platform-preview .lp-mac-sidebar { padding: 13px 5px; }
+  .alexis-landing .lp-platform-preview .lp-preview-brand { flex-direction: column; gap: 10px; margin-bottom: 13px !important; }
+  .alexis-landing .lp-platform-preview .lp-mac-sidebar .lp-preview-chats, .alexis-landing .lp-platform-preview .lp-preview-profile-copy, .alexis-landing .lp-mac-sidebar nav small { display: none; }
+  .alexis-landing .lp-platform-preview .lp-preview-new { padding: 7px; }
+  .alexis-landing .lp-platform-preview .lp-mac-main { padding: 12px 10px; margin: 6px 6px 6px 0; }
+  .alexis-landing .lp-platform-preview .lp-mac-toolbar { gap: 12px; }
+  .alexis-landing .lp-mac-toolbar kbd, .alexis-landing .lp-mac-toolbar > a > span, .alexis-landing .lp-mac-toolbar > button:last-child > span, .alexis-landing .lp-mac-toolbar small { display: none; }
+  .alexis-landing .lp-preview-chat-layout { min-height: 338px; }
+  .alexis-landing .lp-preview-welcome { padding: 35px 0; }
+  .alexis-landing .lp-preview-welcome h3, .alexis-landing .has-activity .lp-preview-welcome h3 { font-size: 21px; letter-spacing: -.6px; }
+  .alexis-landing .lp-preview-welcome > p { font-size: 9px; line-height: 1.6; margin-bottom: 20px; }
+  .alexis-landing .lp-platform-composer { padding: 11px 9px; border-radius: 12px; }
+  .alexis-landing .lp-platform-composer textarea { font-size: 10px; min-height: 75px; }
+  .alexis-landing .lp-preview-composer-bottom { gap: 7px; }
+  .alexis-landing .lp-preview-context, .alexis-landing .lp-platform-composer .chat-mode-trigger { font-size: 8px; gap: 3px; }
+  .alexis-landing .lp-preview-context svg { display: none; }
+  .alexis-landing .lp-preview-send { gap: 5px; }
+  .alexis-landing .lp-preview-send button { width: 23px; height: 23px; }
+  .alexis-landing .lp-preview-starters { gap: 5px; }
+  .alexis-landing .lp-preview-starters button { font-size: 8px; padding: 6px; }
+  .alexis-landing .lp-platform-preview .lp-palette-bar { flex-direction: column; border-radius: 16px; padding: 15px 10px; gap: 14px; margin-top: 20px; }
+  .alexis-landing .lp-palette-bar .lp-palette-copy { text-align: left; }
+  .alexis-landing .lp-palette-bar button { padding: 8px; font-size: 9px; }
+}
+
+/* Generous section rhythm and actual entrance choreography. */
+.alexis-landing .lp-section { padding-block: 96px; }
+.alexis-landing .lp-tools-section { padding-top: 74px; }
+.alexis-landing .lp-curriculum, .alexis-landing .lp-growth-pricing, .alexis-landing .lp-faq { padding-top: 96px; }
+.alexis-landing .lp-section-heading { margin-bottom: 48px; }
+.alexis-landing .lp-scroll-reveal { transition: opacity .75s ease var(--reveal-delay,0ms), translate .75s cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms), filter .75s ease var(--reveal-delay,0ms); }
+.alexis-landing .lp-scroll-reveal[data-reveal="waiting"] { opacity: 0; translate: 0 26px; filter: blur(3px); }
+.alexis-landing .lp-scroll-reveal[data-reveal="shown"] { opacity: 1; translate: 0 0; filter: blur(0); }
+.alexis-landing .lp-hero-copy { animation: lp-copy-arrive .9s cubic-bezier(.2,.7,.2,1) both; }
+.alexis-landing .lp-word-hero { padding-block: 158px 85px; gap: 65px; }
+.alexis-landing .lp-word-hero .lp-hero-copy { max-width: 1000px; }
+.alexis-landing .lp-word-hero h1 { display: block; font-size: clamp(34px,4vw,51px); line-height: 1.3; letter-spacing: -1.9px; margin-block: 24px 27px; }
+.alexis-landing .lp-word-line { display: block; }
+.alexis-landing .lp-word-line strong { color: var(--ink); font-weight: 500; }
+.alexis-landing .lp-word-line .lp-hero-tiles { display: inline-flex; vertical-align: middle; margin: 0 9px 5px; }
+.alexis-landing .lp-word-line .lp-hero-tiles > span { width: 39px; height: 39px; }
+.alexis-landing .lp-headline-chat { display: inline-grid; place-items: center; vertical-align: middle; width: 41px; height: 41px; margin: 0 10px 5px 0; border: 1px solid var(--line); border-radius: 12px; background: var(--ink); color: var(--surface); box-shadow: 0 7px 14px #00000012; transform: rotate(-7deg); animation: lp-chat-tilt 8s ease-in-out infinite; }
+.alexis-landing .lp-word-line .lp-hero-switch { display: inline-flex; vertical-align: middle; margin: 0 11px 5px 0; }
+.alexis-landing .lp-word-hero .lp-hero-copy > p { max-width: 470px; }
+.alexis-landing .lp-living-switch { overflow: clip; isolation: isolate; background: linear-gradient(110deg,#a6dce8,color-mix(in srgb,var(--green) 30%,#d5bdf3),#99dace); background-size: 220% 100%; transition: border-color .4s,box-shadow .4s; animation: lp-toggle-colour 7s ease-in-out infinite; }
+.alexis-landing .lp-living-switch.is-night { background-image: linear-gradient(110deg,#394466,color-mix(in srgb,var(--green) 65%,#555379),#6d6895); border-color: #9399ba50; }
+.alexis-landing .lp-living-switch:hover { box-shadow: 0 0 0 4px color-mix(in srgb,var(--green-soft) 80%,transparent),inset 0 1px 3px #00000010; }
+.alexis-landing .lp-living-switch .lp-switch-knob { display: grid; place-items: center; color: #ac7b34; transition: translate .45s cubic-bezier(.2,1.3,.4,1),background .4s,color .4s; }
+.alexis-landing .lp-living-switch .lp-switch-knob svg { animation: lp-knob-arrive .45s ease both; }
+.alexis-landing .lp-living-switch.is-night .lp-switch-knob { background: #f2f2fc; color: #626a93; }
+.alexis-landing .lp-switch-stars { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s; }
+.alexis-landing .is-night .lp-switch-stars { opacity: 1; }
+.alexis-landing .lp-switch-stars i { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #fff; top: 8px; left: 13px; animation: lp-star-twinkle 3s ease-in-out infinite; }
+.alexis-landing .lp-switch-stars i:nth-child(2) { top: 19px; left: 24px; animation-delay: -1s; }
+.alexis-landing .lp-switch-stars i:nth-child(3) { top: 24px; left: 10px; animation-delay: -2s; }
+.alexis-landing .lp-growth-pricing { max-width: 1010px; }
+.alexis-landing .lp-pricing-heading { text-align: center; margin-bottom: 42px; }
+.alexis-landing .lp-pricing-label { display: inline-flex; border: 1px solid var(--line); border-radius: 100px; padding: 5px 10px; color: var(--muted-ink); font-size: 9px; letter-spacing: .05em; }
+.alexis-landing .lp-pricing-heading h2 { font-size: clamp(31px,3.4vw,43px); line-height: 1.2; font-weight: 500; letter-spacing: -1.5px; margin-block: 19px 12px; }
+.alexis-landing .lp-pricing-heading > p { color: var(--muted-ink); font-size: 13px; line-height: 1.7; }
+.alexis-landing .lp-monthly-label { display: inline-flex; align-items: center; gap: 9px; margin-top: 27px; color: var(--muted-ink); font-size: 10px; }
+.alexis-landing .lp-monthly-label i { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--line-hover); }
+.alexis-landing .lp-growth-shell { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 13px; background: var(--surface-muted); border-radius: 36px; border: 1px solid var(--line); }
+.alexis-landing .lp-growth-plan { display: flex; flex-direction: column; min-width: 0; padding: 30px; border-radius: 26px; }
+.alexis-landing .lp-growth-plan.is-featured { background: var(--surface); border: 1px solid var(--line); box-shadow: 0 3px 15px #00000003; }
+.alexis-landing .lp-growth-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px; color: var(--surface); background: var(--ink); box-shadow: 0 5px 12px #00000012; margin-bottom: 25px; }
+.alexis-landing .lp-growth-icon.is-plus { position: relative; isolation: isolate; color: var(--green-ink); background: var(--green-soft); box-shadow: 0 0 16px var(--green-soft); }
+.alexis-landing .lp-growth-icon.is-plus::before { content: ""; z-index: -1; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 45deg,#b2daf5,#ddc2f3,#f5e0ba,#c2e5d1,#b2daf5); filter: blur(7px); opacity: .65; animation: lp-plan-aura 10s linear infinite; }
+.alexis-landing .lp-growth-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.alexis-landing .lp-popular { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 100px; padding: 5px 8px; font-size: 8px; color: var(--body-ink); }
+.alexis-landing .lp-growth-plan h3 { margin: 0 0 9px; font-size: 20px; font-weight: 500; letter-spacing: -.4px; }
+.alexis-landing .lp-growth-plan > p { color: var(--muted-ink); font-size: 12px; line-height: 1.6; }
+.alexis-landing .lp-growth-price { display: flex; align-items: baseline; gap: 4px; margin-block: 23px; font-size: 43px; font-weight: 500; letter-spacing: -1.8px; }
+.alexis-landing .lp-growth-price span { font-size: 11px; letter-spacing: 0; color: var(--muted-ink); }
+.alexis-landing .lp-growth-inclusions { border-top: 1px solid var(--line); padding-top: 24px; flex: 1; margin-bottom: 30px; }
+.alexis-landing .lp-growth-inclusions h4 { font-size: 10px; font-weight: 500; margin: 0 0 14px; }
+.alexis-landing .lp-growth-inclusions ul { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+.alexis-landing .lp-growth-inclusions li { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--muted-ink); }
+.alexis-landing .lp-growth-inclusions svg { flex-shrink: 0; }
+.alexis-landing .lp-growth-button { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 39px; padding: 10px; color: var(--surface); background: var(--ink); border-radius: 100px; border: 1px solid color-mix(in srgb,var(--ink) 60%,var(--surface)); font-size: 11px; box-shadow: inset 0 1px 2px #ffffff30; transition: translate .2s,box-shadow .2s; }
+.alexis-landing .lp-growth-button:hover { translate: 0 -2px; box-shadow: inset 0 1px 2px #ffffff30,0 4px 10px #00000015; }
+.alexis-landing .lp-growth-plan > small { font-size: 9px; line-height: 1.6; color: var(--muted-ink); margin-top: 12px; text-align: center; }
+.alexis-landing .lp-minimal-final { max-width: 790px; background: transparent; border: 0; border-radius: 0; padding-block: 135px 125px; gap: 0; }
+.alexis-landing .lp-minimal-final h2 { margin: 24px 0 20px; font-size: clamp(36px,4.4vw,54px); font-weight: 500; line-height: 1.12; letter-spacing: -1.8px; }
+.alexis-landing .lp-minimal-final h2 > span { color: var(--muted-ink); }
+.alexis-landing .lp-minimal-final > p { font-size: 14px; color: var(--muted-ink); line-height: 1.7; margin: 0 0 27px; }
+.alexis-landing .lp-minimal-final .lp-hero-actions { gap: 10px; }
+.alexis-landing .lp-minimal-final .lp-button { border-radius: 100px; min-height: 40px; padding: 10px 17px; }
+.alexis-landing .lp-minimal-final .secondary-button { background: var(--surface-muted); color: var(--ink); border-color: transparent; box-shadow: none; }
+.alexis-landing .lp-distraction-demo { grid-template-columns: .85fr 1.15fr; gap: 15px 23px; align-items: center; padding: 23px; transition: background .5s,border-color .5s; }
+.alexis-landing .lp-focus-isolation { display: flex; align-items: center; flex-direction: column; text-align: center; }
+.alexis-landing .lp-isolation-symbol { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--line); border-radius: 13px; color: var(--muted-ink); background: var(--surface-soft); margin-bottom: 12px; }
+.alexis-landing .lp-focus-isolation h4 { font-size: 12px; font-weight: 500; margin: 0; }
+.alexis-landing .lp-distraction-list { display: grid; gap: 8px; width: 100%; margin-block: 19px; transition: opacity .7s,filter .7s,scale .7s; }
+.alexis-landing .lp-distraction-list > span { display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; padding: 8px; color: var(--muted-ink); font-size: 9px; background: var(--surface-soft); }
+.alexis-landing .lp-distraction-list > span i { width: 4px; height: 4px; border-radius: 50%; background: var(--line-hover); margin-left: auto; }
+.alexis-landing .is-engaged .lp-distraction-list { opacity: .2; filter: blur(2px); scale: .94; }
+.alexis-landing .is-engaged .lp-isolation-symbol { background: var(--green-soft); border-color: var(--green-border); color: var(--green-ink); animation: lp-isolation-breathe 5s ease-in-out infinite; }
+.alexis-landing .lp-focus-enable { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 10px; min-height: 30px; border-radius: 7px; color: var(--brand-on); background: var(--green); font-size: 10px; }
+.alexis-landing .lp-step-away { display: inline-flex; align-items: center; gap: 4px; font-size: 8px; padding: 8px 0 0; color: var(--muted-ink); }
+.alexis-landing .lp-companion-message { width: 100%; padding: 13px; margin: 0 0 10px; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 10px; text-align: center; animation: lp-preview-arrive .35s ease both; }
+.alexis-landing .lp-companion-message strong { font-size: 10px; font-weight: 500; }
+.alexis-landing .lp-companion-message p { font-size: 9px; line-height: 1.7; margin: 5px 0 0; color: var(--muted-ink); }
+.alexis-landing .lp-companion-message.is-reminder { border-color: var(--green-border); background: var(--green-soft); }
+.alexis-landing .lp-reminder-actions { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-top: 10px; }
+.alexis-landing .lp-reminder-actions button { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; padding: 6px 8px; border-radius: 6px; }
+.alexis-landing .lp-reminder-actions button:first-child { background: var(--green); color: var(--brand-on); }
+.alexis-landing .lp-reminder-actions button:last-child { color: var(--muted-ink); }
+.alexis-landing .lp-distraction-demo.is-compact { min-height: 290px; }
+.alexis-landing .lp-mac-window:has(.is-engaged) .lp-mac-sidebar > :is(small,p) { opacity: .15; filter: blur(2px); transition: opacity .5s,filter .5s; }
+.alexis-landing .lp-mac-window:has(.is-engaged) .lp-mac-sidebar button:not([aria-pressed="true"]) { opacity: .4; transition: opacity .5s; }
+@keyframes lp-copy-arrive { from { opacity: 0; translate: 0 15px; filter: blur(4px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
+@keyframes lp-chat-tilt { 0%,100% { transform: rotate(-7deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-3px); } }
+@keyframes lp-toggle-colour { 0%,100% { background-position: 0 50%; } 50% { background-position: 100% 50%; } }
+@keyframes lp-knob-arrive { from { opacity: .5; rotate: -80deg; scale: .7; } to { opacity: 1; rotate: 0deg; scale: 1; } }
+@keyframes lp-star-twinkle { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+@keyframes lp-plan-aura { to { rotate: 360deg; } }
+@keyframes lp-isolation-breathe { 0%,100% { box-shadow: 0 0 0 0 var(--green-soft); } 50% { box-shadow: 0 0 0 5px color-mix(in srgb,var(--green-soft) 60%,transparent); } }
+@media (max-width: 800px) {
+  .alexis-landing .lp-section { padding-block: 78px; }
+  .alexis-landing .lp-word-hero h1 { font-size: 38px; }
+  .alexis-landing .lp-growth-plan { padding: 23px; }
+}
+@media (max-width: 600px) {
+  .alexis-landing .lp-section { padding-block: 60px; }
+  .alexis-landing .lp-section-heading { margin-bottom: 33px; }
+  .alexis-landing .lp-word-hero { padding-block: 125px 65px; gap: 43px; }
+  .alexis-landing .lp-word-hero h1 { font-size: clamp(26px,7.5vw,32px); line-height: 1.45; letter-spacing: -1px; margin-block: 20px 24px; }
+  .alexis-landing .lp-word-line { display: inline; }
+  .alexis-landing .lp-word-line::after { content: " "; }
+  .alexis-landing .lp-word-line .lp-hero-tiles { margin: 0 6px 3px; }
+  .alexis-landing .lp-word-line .lp-hero-tiles > span { width: 26px; height: 26px; border-radius: 8px; }
+  .alexis-landing .lp-word-line .lp-hero-tiles svg { width: 15px; height: 15px; }
+  .alexis-landing .lp-headline-chat { width: 28px; height: 28px; border-radius: 8px; margin: 0 7px 3px 0; }
+  .alexis-landing .lp-headline-chat svg { width: 16px; height: 16px; }
+  .alexis-landing .lp-word-line .lp-hero-switch { margin: 0 7px 3px 0; }
+  .alexis-landing .lp-word-hero .lp-hero-copy > p { font-size: 12px; max-width: 280px; }
+  .alexis-landing .lp-growth-shell { grid-template-columns: 1fr; padding: 9px; border-radius: 26px; gap: 9px; }
+  .alexis-landing .lp-growth-plan { padding: 24px; border-radius: 20px; }
+  .alexis-landing .lp-growth-inclusions { margin-bottom: 26px; }
+  .alexis-landing .lp-pricing-heading { margin-bottom: 30px; }
+  .alexis-landing .lp-pricing-heading h2 { font-size: 32px; }
+  .alexis-landing .lp-pricing-heading > p { font-size: 12px; }
+  .alexis-landing .lp-monthly-label { font-size: 9px; }
+  .alexis-landing .lp-minimal-final { padding-block: 95px 90px; }
+  .alexis-landing .lp-minimal-final h2 { font-size: 35px; }
+  .alexis-landing .lp-minimal-final > p { font-size: 12px; max-width: 280px; }
+  .alexis-landing .lp-minimal-final .lp-button { font-size: 12px !important; padding-inline: 14px; }
+  .alexis-landing .lp-distraction-demo { grid-template-columns: 1fr; padding: 18px; gap: 22px; }
+  .alexis-landing .lp-distraction-list { grid-template-columns: 1fr 1fr; gap: 6px; margin-block: 14px; }
+  .alexis-landing .lp-focus-isolation h4 { font-size: 12px; }
+  .alexis-landing .lp-isolation-symbol { width: 35px; height: 35px; margin-bottom: 9px; }
+  .alexis-landing .lp-focus-companion { width: 100%; }
+  .alexis-landing .lp-companion-message { max-width: 250px; }
+  .alexis-landing .lp-companion-choices button { width: 44px; }
+  .alexis-landing .lp-distraction-demo.is-compact { min-height: 315px; display: flex; flex-direction: column; padding: 0; gap: 10px; }
+  .alexis-landing .is-compact .lp-focus-isolation { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 7px; }
+  .alexis-landing .is-compact .lp-isolation-symbol { display: none; }
+  .alexis-landing .is-compact .lp-distraction-list { display: none; }
+  .alexis-landing .is-compact .lp-focus-isolation h4 { font-size: 9px; flex-basis: 100%; }
+  .alexis-landing .is-compact .lp-focus-enable { font-size: 8px; padding: 5px 8px; min-height: 25px; }
+  .alexis-landing .is-compact .lp-step-away { font-size: 7px; padding: 0; }
+  .alexis-landing .is-compact .lp-companion-art { width: 64px; height: 64px; }
+  .alexis-landing .is-compact .lp-companion-message { padding: 9px; margin-bottom: 7px; }
+  .alexis-landing .is-compact .lp-companion-message strong { font-size: 9px; }
+  .alexis-landing .is-compact .lp-companion-message p { font-size: 8px; }
+  .alexis-landing .is-compact .lp-reminder-actions { flex-direction: row; justify-content: center; gap: 3px; margin-top: 6px; }
+  .alexis-landing .is-compact .lp-reminder-actions button { font-size: 7px; padding: 5px; }
+  .alexis-landing .is-compact .lp-focus-preview-note { font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alexis-landing .lp-scroll-reveal, .alexis-landing .lp-scroll-reveal[data-reveal="waiting"] { opacity: 1; translate: none; filter: none; transition: none; }
+  .alexis-landing .lp-hero-copy, .alexis-landing .lp-headline-chat, .alexis-landing .lp-living-switch, .alexis-landing .lp-living-switch *, .alexis-landing .lp-growth-icon::before { animation: none !important; transition: none !important; }
+  .alexis-landing .lp-growth-button { transition: none; }
+}
+
+/* Focus: a quiet workspace, with a companion's gentle return card. */
+.alexis-landing .lp-focus-feature { grid-template-columns: .65fr 1.35fr; gap: 45px; padding: 36px; }
+.alexis-landing .lp-focus-feature > div:first-child h3 { font-size: clamp(30px,3vw,39px); line-height: 1.15; margin: 13px 0 16px; }
+.alexis-landing .lp-focus-feature > div:first-child > p { font-size: 13px; max-width: 245px; }
+.alexis-landing .lp-focus-showcase { display: block; min-width: 0; padding: 0; border: 0; background: transparent; }
+.alexis-landing .lp-focus-showcase .lp-focus-scene { display: block; place-items: normal; min-height: 0; width: 100%; grid-column: auto; grid-row: auto; align-self: auto; overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+.alexis-landing .lp-focus-showcase .lp-focus-scene > div { width: 100%; }
+.alexis-landing .lp-focus-scene-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 13px 16px; border-bottom: 1px solid var(--line); color: var(--body-ink); }
+.alexis-landing .lp-focus-scene-bar > span { display: flex; align-items: center; gap: 7px; font-size: 10px; }
+.alexis-landing .lp-focus-switch { display: flex; gap: 6px; align-items: center; background: var(--surface-muted); padding: 5px 8px; border-radius: 20px; font-size: 9px; color: var(--muted-ink); transition: color .3s,background .3s; }
+.alexis-landing .lp-focus-switch[aria-pressed="true"] { background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-focus-switch i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.alexis-landing .lp-focus-room { position: relative; isolation: isolate; display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 232px; padding: 25px 20px; gap: 20px; background: radial-gradient(ellipse at 82% 45%,var(--green-soft),transparent 65%); }
+.alexis-landing .lp-focus-reading { position: relative; padding: 25px 15px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: 0 9px 25px #00000005; transition: opacity .5s,filter .5s,transform .5s; }
+.alexis-landing .lp-focus-reading > span { font-size: 6px; letter-spacing: .07em; color: var(--muted-ink); }
+.alexis-landing .lp-focus-reading h4 { font-size: 13px; font-weight: 500; letter-spacing: -.3px; margin: 12px 0 15px; }
+.alexis-landing .lp-focus-reading > i { display: block; height: 3px; width: 100%; background: var(--line); margin-top: 8px; border-radius: 10px; }
+.alexis-landing .lp-focus-reading > i:nth-last-child(1), .alexis-landing .lp-focus-reading > i:nth-child(4) { width: 72%; }
+.alexis-landing .lp-focus-reading mark { display: block; width: fit-content; margin-top: 12px; padding: 3px 4px; font-size: 7px; color: var(--green-ink); background: var(--green-soft); }
+.alexis-landing .lp-focus-noise { position: absolute; z-index: 2; left: 8%; top: 28px; display: grid; gap: 8px; pointer-events: none; transition: opacity .7s,filter .7s,translate .7s; }
+.alexis-landing .lp-focus-noise span { display: flex; gap: 7px; align-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: 0 5px 15px #0000000b; padding: 10px 15px; font-size: 9px; color: var(--muted-ink); }
+.alexis-landing .lp-focus-noise span:last-child { margin-left: 12px; }
+.alexis-landing .is-engaged .lp-focus-noise { opacity: 0; filter: blur(6px); translate: -15px -10px; }
+.alexis-landing .lp-focus-presence { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 3; }
+.alexis-landing .lp-focus-presence .lp-companion-art { width: 98px; height: 98px; }
+.alexis-landing .lp-focus-whisper { position: relative; padding: 12px; width: 100%; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); text-align: center; animation: lp-preview-arrive .35s ease both; }
+.alexis-landing .lp-focus-whisper strong { display: block; font-size: 10px; font-weight: 500; color: var(--ink); }
+.alexis-landing .lp-focus-whisper p { font-size: 8px; line-height: 1.6; color: var(--muted-ink); margin: 5px 0 0; }
+.alexis-landing .lp-focus-whisper button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 9px; padding: 7px 10px; background: var(--green); color: var(--brand-on); border-radius: 6px; margin-top: 9px; }
+.alexis-landing .is-away .lp-focus-whisper { border-color: var(--green-border); box-shadow: 0 6px 20px #00000006; }
+.alexis-landing .is-away .lp-focus-reading { opacity: .3; filter: blur(2px); transform: scale(.97); }
+.alexis-landing .lp-focus-scene-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 12px 16px; }
+.alexis-landing .lp-focus-scene-foot > span, .alexis-landing .lp-focus-scene-foot > button { display: flex; gap: 5px; align-items: center; color: var(--muted-ink); font-size: 8px; }
+.alexis-landing .lp-focus-scene-foot > button { color: var(--green-ink); }
+.alexis-landing .lp-focus-scene-foot > button:disabled { opacity: .4; cursor: default; }
+.alexis-landing .lp-focus-companion-picker { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 1px 0; }
+.alexis-landing .lp-focus-companion-picker > span { font-size: 9px; color: var(--muted-ink); }
+.alexis-landing .lp-focus-companion-picker > div { display: flex; gap: 5px; }
+.alexis-landing .lp-focus-companion-picker button { display: flex; align-items: center; gap: 4px; border: 1px solid transparent; border-radius: 8px; padding: 4px 6px; color: var(--muted-ink); font-size: 8px; transition: background .2s,border-color .2s; }
+.alexis-landing .lp-focus-companion-picker button[aria-pressed="true"] { border-color: var(--green-border); color: var(--green-ink); background: var(--surface); }
+.alexis-landing .lp-focus-companion-picker .familiar-art { width: 24px; height: 24px; }
+.alexis-landing .lp-focus-showcase button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 800px) {
+  .alexis-landing .lp-focus-feature { grid-template-columns: 1fr; gap: 25px; }
+  .alexis-landing .lp-focus-feature > div:first-child > p { max-width: 350px; }
+}
+@media (max-width: 600px) {
+  .alexis-landing .lp-preview-placeholder { font-size: 10px; min-height: 75px; }
+  .alexis-landing .lp-focus-feature { padding: 24px 18px; }
+  .alexis-landing .lp-focus-feature > div:first-child h3 { font-size: 32px; }
+  .alexis-landing .lp-focus-feature > div:first-child > p { font-size: 12px; }
+  .alexis-landing .lp-focus-room { padding: 20px 12px; gap: 10px; min-height: 235px; }
+  .alexis-landing .lp-focus-scene-bar { padding: 12px; }
+  .alexis-landing .lp-focus-reading { padding: 14px 9px; }
+  .alexis-landing .lp-focus-reading h4 { font-size: 11px; }
+  .alexis-landing .lp-focus-reading mark { font-size: 6px; }
+  .alexis-landing .lp-focus-presence .lp-companion-art { width: 85px; height: 85px; }
+  .alexis-landing .lp-focus-whisper { padding: 10px 7px; }
+  .alexis-landing .lp-focus-whisper strong { font-size: 9px; }
+  .alexis-landing .lp-focus-scene-foot { padding: 11px; gap: 6px; flex-wrap: wrap; }
+  .alexis-landing .lp-focus-companion-picker { flex-direction: column; padding-top: 16px; }
+  .alexis-landing .lp-focus-companion-picker button { padding: 5px 8px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alexis-landing .lp-focus-showcase *, .alexis-landing .lp-focus-showcase *::before { animation: none !important; transition: none !important; }
+}
+
+/* Shared invitations in the hero and closing section. */
+.alexis-landing .lp-hero-actions.lp-learning-actions { align-items: center; gap: 27px; margin-top: 26px; }
+.alexis-landing .lp-learning-login { display: inline-block; position: relative; padding: 10px 0; color: var(--body-ink); font-size: 13px; font-weight: 500; background: transparent; border: 0; text-decoration: none; }
+.alexis-landing .lp-learning-login::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .22s ease; }
+.alexis-landing .lp-learning-login:hover::after { transform: scaleX(1); }
+.alexis-landing .lp-learning-actions .lp-learning-start { position: relative; isolation: isolate; overflow: hidden; gap: 17px; border-radius: 100px; min-height: 46px; padding: 7px 8px 7px 21px; border: 1px solid color-mix(in srgb,var(--green) 75%,var(--ink)); background: var(--green); color: var(--brand-on); box-shadow: 0 3px 0 color-mix(in srgb,var(--green) 70%,var(--ink)),0 9px 20px color-mix(in srgb,var(--green) 19%,transparent); transition: transform .25s ease,box-shadow .25s ease; }
+.alexis-landing .lp-learning-start::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(115deg,transparent 25%,#ffffff22 50%,transparent 75%); translate: -110% 0; transition: translate .55s ease; }
+.alexis-landing .lp-learning-start:hover { transform: translateY(-3px); box-shadow: 0 5px 0 color-mix(in srgb,var(--green) 70%,var(--ink)),0 14px 27px color-mix(in srgb,var(--green) 25%,transparent); }
+.alexis-landing .lp-learning-start:hover::before { translate: 110% 0; }
+.alexis-landing .lp-learning-start:active { transform: translateY(1px); box-shadow: 0 1px 0 color-mix(in srgb,var(--green) 70%,var(--ink)); }
+.alexis-landing .lp-learning-arrow { display: grid; place-items: center; width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: #ffffff18; transition: background .25s ease,transform .25s ease; }
+.alexis-landing .lp-learning-start:hover .lp-learning-arrow { background: #ffffff2b; transform: rotate(45deg); }
+.alexis-landing .lp-learning-actions > a:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+.alexis-landing .lp-focus-presence .lp-focus-whisper { margin-top: 12px; }
+@media (max-width: 600px) {
+  .alexis-landing .lp-hero-actions.lp-learning-actions { gap: 23px; flex-wrap: nowrap; }
+  .alexis-landing .lp-learning-login { font-size: 12px; }
+  .alexis-landing .lp-learning-actions .lp-learning-start { padding: 7px 7px 7px 16px; gap: 11px; font-size: 12px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alexis-landing .lp-learning-actions a, .alexis-landing .lp-learning-actions a::before, .alexis-landing .lp-learning-actions a::after, .alexis-landing .lp-learning-arrow { transition: none; }
+  .alexis-landing .lp-learning-start:hover { transform: none; }
+}
+.alexis-landing .lp-focus-showcase.is-engaged .lp-focus-reading { opacity: .3; filter: blur(2px); transform: scale(.97); }
+.alexis-landing .lp-focus-showcase.is-engaged .lp-focus-whisper { border-color: var(--green-border); }
+
+/* The companion speaks from a floating bubble, outside the control layout. */
+.alexis-landing .lp-companion-bubble { position: absolute; z-index: 4; top: -32px; left: 50%; transform: translateX(-50%); width: max-content; max-width: 185px; padding: 10px 13px; border: 1px solid var(--green-border); border-radius: 13px; background: var(--surface); box-shadow: 0 7px 22px #0000000b; pointer-events: none; animation: lp-companion-bubble-drift 5s ease-in-out infinite; }
+.alexis-landing .lp-companion-bubble::after { content: ""; position: absolute; bottom: -5px; left: calc(50% - 4px); width: 8px; height: 8px; background: var(--surface); border-right: 1px solid var(--green-border); border-bottom: 1px solid var(--green-border); transform: rotate(45deg); }
+.alexis-landing .lp-companion-bubble p { margin: 0; font-size: 10px; line-height: 1.5; color: var(--body-ink); text-align: center; }
+@keyframes lp-companion-bubble-drift { 0%,100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+@media (max-width: 600px) {
+  .alexis-landing .lp-companion-bubble { max-width: 140px; top: -38px; padding: 9px 11px; }
+  .alexis-landing .lp-companion-bubble p { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alexis-landing .lp-companion-bubble { animation: none; }
+}
+.alexis-landing .lp-focus-showcase .lp-focus-room { grid-template-columns: repeat(2,minmax(0,1fr)); padding-top: 48px; }
+.alexis-landing .lp-focus-presence { min-width: 0; }
+.alexis-landing .lp-focus-presence .lp-focus-companion-picker { max-width: 100%; }
+.alexis-landing .lp-focus-presence .lp-focus-companion-picker > div { justify-content: center; flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .alexis-landing .lp-focus-showcase .lp-focus-room { padding-top: 56px; }
+  .alexis-landing .lp-focus-presence .lp-focus-companion-picker button > span:not(.familiar-art), .alexis-landing .lp-focus-presence .lp-focus-companion-picker button > svg { display: none; }
+}

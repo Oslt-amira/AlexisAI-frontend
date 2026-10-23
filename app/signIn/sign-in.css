@@ -68,13 +68,13 @@
 .auth-form-panel h1 {
   font-size: 32px;
   letter-spacing: -1px;
-  line-height: 1;
+  line-height: 0.5;
   margin: 0px 0 14px;
 }
 .auth-form-panel > p {
   font-size: 14px;
   color: var(--muted-ink);
-  line-height: 1.7;
+  line-height: 1.5;
 }
 .auth-form-panel form {
   margin-top: 32px;
@@ -671,4 +671,60 @@
   .auth-header .brand > span:last-child {
     font-size: 21px;
   }
+}
+.auth-mini-emblem { background: transparent; }
+
+/* Quiet editorial cards, shared with the landing page's visual language. */
+.auth-page .auth-brand-panel { background: var(--surface-muted); padding: 32px 30px 24px; gap: 20px; }
+.auth-page .auth-brand-panel::before { display: none; }
+.auth-page .auth-editorial-icons { display: flex; align-items: center; margin: 0 0 18px 3px; }
+.auth-page .auth-editorial-icons > span { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); box-shadow: 0 5px 12px #00000008; transform: rotate(-9deg); color: var(--body-ink); }
+.auth-page .auth-editorial-icons > span:nth-child(2) { transform: rotate(7deg); margin-left: -3px; color: var(--green-ink); }
+.auth-page .auth-editorial-icons > span:last-child { transform: rotate(-5deg); margin-left: -2px; background: var(--ink); color: var(--surface); }
+.auth-page .auth-visual-head h2 { font-size: 23px; font-weight: 400; line-height: 1.35; letter-spacing: -.65px; color: var(--muted-ink); margin: 0; }
+.auth-page .auth-visual-head h2 em { font-style: normal; font-weight: 400; color: var(--muted-ink); }
+.auth-page .auth-float-field { gap: 18px 12px; transform: translate3d(calc(var(--mx,0)*10px),calc(var(--my,0)*10px),0); }
+.auth-page .auth-float-card { animation: auth-drift var(--drift-duration,9s) ease-in-out var(--drift-delay,0s) infinite; transform: translate3d(calc(var(--mx,0)*var(--depth,12px)),calc(var(--my,0)*var(--depth,12px)),0); border-radius: 15px; box-shadow: 0 14px 28px -18px #19291e35; transition: transform .45s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease); }
+.auth-page .auth-float-card:hover { animation-play-state: paused; transform: translate3d(calc(var(--mx,0)*var(--depth,12px)),calc(var(--my,0)*var(--depth,12px)),0) scale(1.015); box-shadow: 0 18px 32px -18px #19291e45; }
+.auth-page .auth-float-chat { padding: 15px; margin-right: 16px; --tilt: -2deg; --depth: 8px; --drift-duration: 11s; --drift-delay: -2s; }
+.auth-page .auth-float-chat header { padding-bottom: 11px; border-bottom: 1px solid var(--line); }
+.auth-page .auth-float-chat header b { font-weight: 500; font-size: 10px; }
+.auth-page .auth-live-dot { animation: none; width: 4px; height: 4px; background: var(--line-hover); }
+.auth-page .auth-chat-thread { gap: 12px; margin-top: 15px; }
+.auth-page .auth-bubble-user { background: var(--surface-muted); color: var(--body-ink); border-radius: 10px 10px 3px 10px; font-size: 10px; line-height: 1.6; }
+.auth-page .auth-bubble-ai { padding: 0; background: transparent; color: var(--body-ink); font-size: 11px; line-height: 1.65; }
+.auth-page .auth-cite { font-size: 8px; border: 0; margin: 8px 0 0; padding: 5px 7px; width: fit-content; border-radius: 5px; background: var(--surface-soft); color: var(--green-ink); opacity: 1; }
+.auth-page .auth-card-action { margin-top: 11px; font-size: 9px; gap: 5px; }
+.auth-page .auth-flashcard { height: 145px; margin-left: -7px; margin-top: 3px; background: none; box-shadow: none; --tilt: 3deg; --depth: 20px; --drift-duration: 10s; --drift-delay: -5s; }
+.auth-page .auth-flashcard:hover { box-shadow: none; }
+.auth-page .auth-flashcard-face { box-shadow: 0 14px 28px -18px #19291e35; gap: 10px; padding: 16px; }
+.auth-page .auth-flashcard small { font-size: 7px; letter-spacing: .08em; }
+.auth-page .auth-flashcard b { font-size: 12px; font-weight: 500; line-height: 1.5; }
+.auth-page .auth-flashcard em { font-style: normal; font-size: 9px; }
+.auth-page .auth-flashcard-back { background: var(--surface); }
+.auth-page .auth-float-focus { padding: 12px 9px; gap: 5px; margin-top: 13px; margin-right: -5px; background: var(--surface); --tilt: -3deg; --depth: 27px; --drift-duration: 12s; --drift-delay: -7s; transition: background .4s,transform .45s var(--ease),box-shadow .25s var(--ease); }
+.auth-page .auth-float-focus.is-focusing { background: color-mix(in srgb,var(--green-soft) 30%,var(--surface)); }
+.auth-page .auth-focus-preview-toggle { display: flex; align-items: center; gap: 5px; color: var(--muted-ink); font-size: 8px; }
+.auth-page .auth-focus-preview-toggle i { width: 4px; height: 4px; border-radius: 50%; background: var(--line-hover); }
+.auth-page .is-focusing .auth-focus-preview-toggle { color: var(--green-ink); }
+.auth-page .is-focusing .auth-focus-preview-toggle i { background: var(--green); }
+.auth-page .auth-focus-companion { display: block; width: 76px; height: 76px; }
+.auth-page .auth-focus-companion svg { display: block; width: 100%; height: 100%; }
+.auth-page .auth-float-focus p { font-size: 8px; text-align: center; }
+.auth-page .auth-float-plan { padding: 15px; margin-left: 16px; margin-right: -5px; --tilt: 1.5deg; --depth: 15px; --drift-duration: 13s; --drift-delay: -3.4s; }
+.auth-page .auth-float-plan header b { font-size: 10px; font-weight: 500; }
+.auth-page .auth-float-plan li { font-size: 10px; }
+.auth-page .auth-float-plan li.is-done > span:first-child { background: var(--green-soft); border-color: transparent; color: var(--green-ink); }
+.auth-page .auth-plan-track { height: 2px; margin-top: 13px; }
+.auth-page .auth-plan-track > span { width: 66%; animation: none; opacity: .45; }
+.auth-page .auth-visual-foot { font-size: 9px; }
+.auth-page .auth-float-field button:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+@media (min-width: 761px) and (max-width: 980px) {
+  .auth-page .auth-brand-panel { padding-inline: 23px; }
+  .auth-page .auth-visual-head h2 { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auth-page .auth-float-field, .auth-page .auth-float-field * { transition: none !important; animation: none !important; }
+  .auth-page .auth-float-field, .auth-page .auth-float-card, .auth-page .auth-float-card:hover { transform: none; }
+  .auth-page .auth-float-card { rotate: var(--tilt,0deg); }
 }

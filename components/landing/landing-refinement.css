@@ -1,0 +1,129 @@
+/* A quiet hero and compact product cards, using the platform's own tokens. */
+.alexis-landing .lp-simple-hero { min-height: 0; padding-block: 165px 85px; gap: 0; }
+.alexis-landing .lp-simple-hero::before { display: none; }
+.alexis-landing .lp-simple-hero .lp-hero-copy { max-width: 700px; }
+.alexis-landing .lp-hero-intro { display: block; font-size: 12px; color: var(--muted-ink); }
+.alexis-landing .lp-simple-hero h1 { font-size: clamp(42px,5vw,64px); line-height: 1.08; font-weight: 500; letter-spacing: -2.7px; margin-block: 22px; }
+.alexis-landing .lp-simple-hero h1 > span { color: var(--muted-ink); }
+.alexis-landing .lp-simple-hero .lp-hero-copy > p { max-width: 390px; font-size: 14px; line-height: 1.7; margin: 0 auto 26px; }
+.alexis-landing .lp-simple-hero .lp-hero-actions { gap: 10px; }
+.alexis-landing .lp-simple-hero .lp-button { min-height: 40px; padding: 10px 17px; border-radius: 100px; gap: 10px; }
+.alexis-landing .lp-simple-hero .secondary-button { border-color: transparent; background: var(--surface-muted); color: var(--ink); box-shadow: none; }
+.alexis-landing .lp-simple-hero .secondary-button:hover { background: var(--hover); }
+.alexis-landing .lp-tools-section { padding-top: 18px; }
+.alexis-landing .lp-section-heading h2 { font-size: clamp(30px,3.4vw,43px); font-weight: 500; line-height: 1.12; letter-spacing: -1.5px; }
+.alexis-landing .lp-section-heading h2 > span { color: var(--muted-ink); }
+.alexis-landing .lp-section-heading > p { max-width: 280px; font-size: 13px; }
+.alexis-landing .lp-tools-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.alexis-landing .lp-tool-card { min-width: 0; overflow: clip; padding: 27px 28px 0; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-muted); }
+.alexis-landing .lp-tool-card > h3 { margin: 0 0 9px; font-size: 21px; font-weight: 500; letter-spacing: -.65px; line-height: 1.25; }
+.alexis-landing .lp-tool-card > p { max-width: 350px; margin: 0; color: var(--muted-ink); font-size: 13px; line-height: 1.65; }
+.alexis-landing .lp-tool-scene { position: relative; isolation: isolate; height: 258px; margin-top: 20px; }
+.alexis-landing .lp-tool-scene::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1; background: radial-gradient(ellipse at 50% 100%,color-mix(in srgb,var(--line) 70%,transparent),transparent 70%); }
+.alexis-landing .lp-paper-preview, .alexis-landing .lp-note-preview, .alexis-landing .lp-week-preview, .alexis-landing .lp-mode-preview, .alexis-landing .lp-sync-service { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 15px 30px -20px #00000035; }
+.alexis-landing .lp-paper-preview { position: absolute; width: 69%; left: 1%; top: 15px; bottom: -25px; padding: 22px; transform: rotate(-3deg); }
+.alexis-landing .lp-paper-preview > span { display: flex; gap: 7px; align-items: center; color: var(--muted-ink); font-size: 10px; }
+.alexis-landing .lp-paper-preview h4 { font-size: 15px; letter-spacing: -.3px; font-weight: 500; margin: 24px 0 16px; max-width: 160px; }
+.alexis-landing .lp-paper-preview i, .alexis-landing .lp-note-preview i { display: block; height: 4px; border-radius: 3px; background: var(--line); margin-top: 9px; }
+.alexis-landing .lp-paper-preview i:last-child, .alexis-landing .lp-note-preview i:last-child { width: 65%; }
+.alexis-landing .lp-paper-preview mark { display: block; margin-top: 13px; padding: 5px 0; background: var(--green-soft); color: var(--green-ink); font-size: 8px; }
+.alexis-landing .lp-note-preview { position: absolute; right: -3px; top: 72px; width: 48%; padding: 14px; transform: rotate(3deg); }
+.alexis-landing .lp-note-preview > div { display: flex; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.alexis-landing .lp-note-preview button { font-size: 9px; color: var(--muted-ink); padding: 4px 6px; border-radius: 4px; }
+.alexis-landing .lp-note-preview button[aria-pressed="true"] { background: var(--subtle); color: var(--ink); }
+.alexis-landing .lp-note-preview p { font-size: 11px; line-height: 1.7; margin-top: 13px; }
+.alexis-landing .lp-floating-icon, .alexis-landing .lp-plan-icon, .alexis-landing .lp-course-icon { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border: 1px solid #ffffff22; border-radius: 12px; background: linear-gradient(145deg,#535657,#141718 65%); color: #fff; box-shadow: inset 0 1px 2px #ffffff38,0 6px 12px #00000015; }
+.alexis-landing .lp-floating-icon { position: absolute; left: 9%; bottom: 25px; transform: rotate(-10deg); }
+.alexis-landing .lp-week-preview { position: absolute; width: 87%; top: 16px; left: 6%; padding: 18px; transform: rotate(2deg); }
+.alexis-landing .lp-week-preview > span { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--muted-ink); }
+.alexis-landing .lp-week-preview > div { display: flex; justify-content: space-between; margin-top: 14px; gap: 4px; }
+.alexis-landing .lp-week-preview button { flex: 1; padding: 7px 2px; border-radius: 7px; }
+.alexis-landing .lp-week-preview button small { display: block; color: var(--muted-ink); font-size: 8px; }
+.alexis-landing .lp-week-preview button b { display: block; font-size: 13px; margin-top: 4px; font-weight: 500; }
+.alexis-landing .lp-week-preview button[aria-pressed="true"] { background: var(--green-soft); color: var(--green-ink); }
+.alexis-landing .lp-week-preview p { display: flex; align-items: center; gap: 7px; margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--line); font-size: 11px; }
+.alexis-landing .lp-week-preview p > span { width: 4px; height: 4px; border-radius: 50%; background: var(--green-ink); }
+.alexis-landing .lp-week-preview p > small { margin-left: auto; font-size: 9px; color: var(--muted-ink); }
+.alexis-landing .lp-focus-preview { position: absolute; bottom: 17px; left: 17%; right: 7%; display: flex; align-items: center; gap: 9px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 15px 25px -15px #00000030; transform: rotate(-3deg); }
+.alexis-landing .lp-focus-preview > span { width: 6px; height: 6px; border-radius: 50%; background: var(--green-ink); }
+.alexis-landing .lp-focus-preview b { font-size: 18px; font-weight: 500; letter-spacing: -.6px; }
+.alexis-landing .lp-focus-preview small { color: var(--muted-ink); font-size: 9px; }
+.alexis-landing .lp-focus-preview > svg { margin-left: auto; }
+.alexis-landing .lp-mode-options { display: flex; gap: 5px; justify-content: center; padding-top: 15px; }
+.alexis-landing .lp-mode-options button { display: inline-flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; color: var(--muted-ink); background: var(--surface); border: 1px solid var(--line); font-size: 10px; }
+.alexis-landing .lp-mode-options button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); box-shadow: 0 4px 8px #00000015; }
+.alexis-landing .lp-mode-preview { position: absolute; left: 5%; right: 5%; top: 75px; padding: 18px; transform: rotate(-1.5deg); }
+.alexis-landing .lp-mode-preview > span { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--muted-ink); }
+.alexis-landing .lp-mode-preview > div { display: flex; gap: 10px; margin-block: 18px; }
+.alexis-landing .lp-mode-preview img { flex-shrink: 0; }
+.alexis-landing .lp-mode-preview p { font-size: 12px; line-height: 1.7; }
+.alexis-landing .lp-mode-preview > small { display: flex; align-items: center; gap: 6px; color: var(--muted-ink); font-size: 9px; }
+.alexis-landing .lp-sync-art { padding: 25px 7% 0; }
+.alexis-landing .lp-sync-service { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; padding: 16px; }
+.alexis-landing .lp-sync-service > span { flex: 1; font-size: 12px; }
+.alexis-landing .lp-sync-service small { display: block; font-size: 9px; color: var(--muted-ink); margin-top: 3px; }
+.alexis-landing .lp-sync-service > svg:last-child { color: var(--green-ink); }
+.alexis-landing .lp-sync-service:first-child { transform: rotate(-3deg); }
+.alexis-landing .lp-sync-service:last-child { transform: rotate(3deg); }
+.alexis-landing .lp-sync-bridge { display: flex; align-items: center; justify-content: center; gap: 12px; height: 66px; }
+.alexis-landing .lp-sync-bridge i { width: 30%; height: 1px; background: var(--line-hover); }
+.alexis-landing .lp-sync-bridge > span { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; color: var(--muted-ink); background: var(--surface); }
+.alexis-landing .lp-curriculum { padding-top: 12px; }
+.alexis-landing .lp-course-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.alexis-landing .lp-course-card { display: flex; flex-direction: column; min-width: 0; padding: 25px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-soft); color: var(--ink); transition: border-color .2s,background .2s; }
+.alexis-landing .lp-course-card:hover { border-color: var(--line-hover); background: var(--surface-muted); }
+.alexis-landing .lp-course-icon { width: 38px; height: 38px; border-radius: 10px; margin-bottom: 22px; }
+.alexis-landing .lp-course-card h3 { font-size: 20px; font-weight: 500; letter-spacing: -.5px; margin: 0 0 10px; }
+.alexis-landing .lp-course-card > p { color: var(--muted-ink); font-size: 12px; line-height: 1.7; max-width: 250px; }
+.alexis-landing .lp-course-card ul { list-style: none; padding: 0; margin: 21px 0 25px; display: grid; gap: 9px; color: var(--body-ink); font-size: 12px; }
+.alexis-landing .lp-course-link { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding-top: 16px; border-top: 1px solid var(--line); margin-top: auto; font-size: 12px; }
+.alexis-landing .lp-simple-pricing { padding-top: 18px; }
+.alexis-landing .lp-simple-pricing .lp-pricing-grid { max-width: none; margin-top: 0; }
+.alexis-landing .lp-simple-pricing .lp-plan { padding: 25px; border-radius: 18px; background: var(--surface-soft); }
+.alexis-landing .lp-plan-top { display: flex; align-items: center; gap: 12px; }
+.alexis-landing .lp-plan-top h3 { font-size: 20px; font-weight: 500; letter-spacing: -.5px; margin: 0; }
+.alexis-landing .lp-plan-top .lp-price { margin: 0 0 0 auto; font-size: 21px; letter-spacing: -.6px; gap: 0; white-space: nowrap; }
+.alexis-landing .lp-plan-top .lp-price span { font-size: 12px; margin-left: 2px; }
+.alexis-landing .lp-simple-pricing .lp-plan > p { margin-block: 18px; }
+.alexis-landing .lp-simple-pricing .lp-plan ul { margin-bottom: 22px; min-height: 112px; gap: 13px; }
+.alexis-landing .lp-simple-pricing .lp-plan li { font-size: 12px; }
+.alexis-landing .lp-simple-pricing .lp-plan > .lp-button { border-radius: 10px; box-shadow: none; }
+.alexis-landing .lp-simple-pricing .lp-plan > small { font-size: 11px; }
+@media (max-width: 850px) {
+  .alexis-landing .lp-tool-card { padding-inline: 20px; }
+  .alexis-landing .lp-course-grid { grid-template-columns: 1fr; }
+  .alexis-landing .lp-course-card { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; column-gap: 18px; align-items: start; }
+  .alexis-landing .lp-course-icon { grid-row: 1 / 3; margin: 0; }
+  .alexis-landing .lp-course-card h3, .alexis-landing .lp-course-card > p { grid-column: 2; max-width: none; }
+  .alexis-landing .lp-course-card ul { grid-column: 2; margin-block: 16px; }
+  .alexis-landing .lp-course-link { grid-column: 2 / -1; width: 100%; }
+  .alexis-landing .lp-mode-options button { padding-inline: 8px; }
+}
+@media (max-width: 600px) {
+  .alexis-landing .lp-simple-hero { padding-block: 127px 65px; }
+  .alexis-landing .lp-simple-hero h1 { font-size: clamp(39px,11vw,48px); letter-spacing: -1.8px; }
+  .alexis-landing .lp-simple-hero .lp-hero-copy > p { max-width: 290px; font-size: 13px; }
+  .alexis-landing .lp-simple-hero .lp-button { font-size: 12px !important; padding-inline: 14px; }
+  .alexis-landing .lp-tools-section { padding-top: 10px; }
+  .alexis-landing .lp-tools-grid { grid-template-columns: 1fr; gap: 13px; }
+  .alexis-landing .lp-tool-card { padding: 24px 20px 0; border-radius: 15px; }
+  .alexis-landing .lp-tool-card > h3 { font-size: 20px; }
+  .alexis-landing .lp-tool-card > p { font-size: 12px; }
+  .alexis-landing .lp-tool-scene { height: 245px; }
+  .alexis-landing .lp-paper-preview { padding: 17px; }
+  .alexis-landing .lp-paper-preview h4 { font-size: 13px; }
+  .alexis-landing .lp-note-preview { padding: 12px; width: 52%; }
+  .alexis-landing .lp-note-preview button { font-size: 8px; padding-inline: 4px; }
+  .alexis-landing .lp-note-preview p { font-size: 10px; }
+  .alexis-landing .lp-curriculum { padding-top: 10px; }
+  .alexis-landing .lp-course-card { padding: 22px; column-gap: 12px; }
+  .alexis-landing .lp-course-card h3 { font-size: 19px; }
+  .alexis-landing .lp-simple-pricing { padding-top: 10px; }
+  .alexis-landing .lp-plan-top { gap: 9px; }
+  .alexis-landing .lp-plan-icon { width: 34px; height: 34px; border-radius: 9px; }
+  .alexis-landing .lp-plan-top h3 { font-size: 19px; }
+  .alexis-landing .lp-plan-top .lp-price { font-size: 19px; }
+  .alexis-landing .lp-plan-top .lp-price span { font-size: 10px; }
+  .alexis-landing .lp-simple-pricing .lp-plan ul { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .alexis-landing .lp-course-card { transition: none; } }

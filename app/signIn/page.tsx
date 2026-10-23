@@ -1,18 +1,23 @@
 "use client";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
   Check,
+  BookOpen,
+  Focus,
   Leaf,
   Loader2,
   Mail,
+  MessageCircle,
+  PenLine,
   RefreshCw,
   Sparkles,
 } from "lucide-react";
 import { auth } from "@/lib/api";
 import { AlexisLogo } from "@/components/icons/AlexisLogo";
+import FamiliarArt from "@/components/workspace/familiar-art";
 import "@/components/workspace/design-system.css";
 import "./sign-in.css";
 const palettes = [
@@ -26,7 +31,7 @@ const prompts = [
   {
     question: "Why do leaves change color in autumn?",
     answer:
-      "Chlorophyll fades as the days shorten, revealing the carotenoids underneath.",
+      "Chlorophyll fades as the days shorten, revealing carotenoids underneath.",
     source: "Biology notes · p. 4",
   },
   {
@@ -50,15 +55,10 @@ export default function SignIn() {
   const [accent, setAccent] = useState<Accent | null>(null);
   const [promptIndex, setPromptIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const [focusSeconds, setFocusSeconds] = useState(25 * 60);
-  const [focusRunning, setFocusRunning] = useState(true);
+  const [focusRunning, setFocusRunning] = useState(false);
   const visualRef = useRef<HTMLElement>(null);
   const activeAccent = accent ?? "green";
   const prompt = prompts[promptIndex];
-  const focusClock = `${Math.floor(focusSeconds / 60)}:${String(
-    focusSeconds % 60,
-  ).padStart(2, "0")}`;
-  const focusAngle = `${(1 - focusSeconds / (25 * 60)) * 360}deg`;
   useEffect(() => {
     try {
       const stored = localStorage.getItem("alexis-accent");
@@ -78,13 +78,6 @@ export default function SignIn() {
       localStorage.setItem("alexis-accent", accent);
     } catch {}
   }, [accent]);
-  useEffect(() => {
-    if (!focusRunning) return;
-    const interval = setInterval(() => {
-      setFocusSeconds((seconds) => (seconds <= 1 ? 25 * 60 : seconds - 1));
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [focusRunning]);
   function handleVisualMove(event: React.MouseEvent<HTMLElement>) {
     const element = visualRef.current;
     if (!element) return;
@@ -207,7 +200,7 @@ export default function SignIn() {
                   </>
                 )}
               </button>
-              <p className="auth-magic">
+              <p className="auth-magic pb-2">
                 We’ll email you a secure sign-in link. No password needed.
               </p>
             </form>
@@ -245,33 +238,19 @@ export default function SignIn() {
           onMouseMove={handleVisualMove}
           onMouseLeave={resetVisual}
         >
-          <span
-            className="auth-visual-glow auth-visual-glow-a"
-            aria-hidden="true"
-          />
-          <span
-            className="auth-visual-glow auth-visual-glow-b"
-            aria-hidden="true"
-          />
-          <span className="auth-spark auth-spark-a" aria-hidden="true">
-            +
-          </span>
-          <span className="auth-spark auth-spark-b" aria-hidden="true">
-            +
-          </span>
           <div className="auth-visual-head">
-            <span className="eyebrow">A LIVING STUDY SPACE</span>
-            <h2>
-              Learn deeper,
-              <br />
-              <em>not harder.</em>
-            </h2>
+            <div className="auth-editorial-icons" aria-hidden="true">
+              <span><BookOpen size={20} /></span>
+              <span><PenLine size={20} /></span>
+              <span><MessageCircle size={20} /></span>
+            </div>
+           
           </div>
           <div className="auth-float-field">
             <article className="auth-float-card auth-float-chat">
               <header>
                 <span className="auth-mini-emblem">
-                  <Leaf size={13} />
+                  <AlexisLogo width={22} height={22} />
                 </span>
                 <b>Alexis</b>
                 <span className="auth-live-dot" aria-hidden="true" />
@@ -313,30 +292,17 @@ export default function SignIn() {
                 </span>
               </span>
             </button>
-            <article className="auth-float-card auth-float-focus">
+            <article className={`auth-float-card auth-float-focus ${focusRunning ? "is-focusing" : ""}`}>
               <button
-                className="auth-timer"
+                className="auth-focus-preview-toggle"
                 onClick={() => setFocusRunning((running) => !running)}
-                aria-label={
-                  focusRunning ? "Pause focus timer" : "Start focus timer"
-                }
+                aria-label="Preview focus mode"
+                aria-pressed={focusRunning}
               >
-                <span
-                  className="auth-timer-ring"
-                  style={{ "--angle": focusAngle } as CSSProperties}
-                >
-                  <span className="flex flex-col items-center justify-center gap-0 py-4">
-                    <b className="leading-none">{focusClock}</b>
-                    <small className="leading-none">
-                      {focusRunning ? "Focusing" : "Paused"}
-                    </small>
-                  </span>
-                </span>
+                <Focus size={12} />{focusRunning ? "Focus on" : "Focus off"}<i />
               </button>
-              <p>
-                <Leaf size={12} />
-                Biology · deep work
-              </p>
+              <span className="auth-focus-companion"><FamiliarArt kind="cat" /></span>
+              <p>{focusRunning ? "One thought at a time." : "A little room to focus."}</p>
             </article>
             <article className="auth-float-card auth-float-plan">
               <header>
@@ -372,9 +338,6 @@ export default function SignIn() {
           </p>
         </aside>
       </main>
-      <footer className="auth-footer">
-        Better questions. Deeper learning.
-      </footer>
     </div>
   );
 }

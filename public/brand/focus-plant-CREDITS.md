@@ -11,13 +11,13 @@ The original SVG is preserved as focus-plant-source.svg. Alexis separates the fo
 
 ## Companion choices
 
-All companion artwork is by Twitter, Inc. and other Twemoji contributors, under CC BY 4.0. Original SVGs are stored locally in `companions/`.
+The legacy plant SVG artwork listed below is by Twitter, Inc. and other Twemoji contributors, under CC BY 4.0. Original SVGs are stored locally in `companions/`.
 
 - Potted plant: https://github.com/jdecked/twemoji/blob/main/assets/svg/1fab4.svg
 - Cactus: https://github.com/jdecked/twemoji/blob/main/assets/svg/1f335.svg
 - Sunflower: https://github.com/jdecked/twemoji/blob/main/assets/svg/1f33b.svg
 - Herb: https://github.com/jdecked/twemoji/blob/main/assets/svg/1f33f.svg
 
-The focus picker uses the original potted plant with growth and watering interactions. The graphics license is included in `focus-plant-LICENSE.txt`. The other plant SVGs are retained as unused source assets.
+These plant SVGs are retained as unused source assets. Their graphics license is included in `focus-plant-LICENSE.txt`.
 
-The white cat and alien are original layered vector artwork in `components/workspace/familiar-art.tsx`, dedicated under CC0. See `companions/LICENSE.txt`. These familiars do not use Twemoji artwork.
+The current focus picker uses original animated SVG mushroom, sleepy cat, and glow spirit characters. See companions/ARTWORK.md for details. These illustrations do not use Twemoji artwork.

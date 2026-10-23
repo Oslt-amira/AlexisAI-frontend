@@ -1,9 +1,6 @@
-Original Alexis familiar artwork (white cat and alien)
+Original vector companion artwork
 
-Dedicated to the public domain under CC0 1.0 Universal.
+The original vector cat, mushroom and spirit illustrations in components/workspace/familiar-art.tsx are dedicated under CC0 1.0 Universal:
 https://creativecommons.org/publicdomain/zero/1.0/
 
-Source: components/workspace/familiar-art.tsx
-These original layered vector illustrations are not Twemoji assets.
-The existing plant remains separately licensed under CC BY 4.0; see
-/brand/focus-plant-CREDITS.md and /brand/focus-plant-LICENSE.txt.
+Legacy Twemoji SVG assets have a separate CC BY 4.0 notice in /brand/focus-plant-CREDITS.md and /brand/focus-plant-LICENSE.txt.

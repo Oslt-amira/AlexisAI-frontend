@@ -6,8 +6,6 @@ import {
   ChevronDown,
   Clock3,
   Coffee,
-  Droplets,
-  Heart,
   Minus,
   Moon,
   Palette,
@@ -19,15 +17,15 @@ import {
   X,
 } from "lucide-react";
 import FamiliarArt from "./familiar-art";
+import { watchFocusDepartures } from "./focus-guard";
 
 const companions = [
   {
     id: "potted",
-    label: "Plant",
-    src: "/brand/companions/potted-plant.svg",
+    label: "Mushroom",
   },
-  { id: "cat", label: "White cat", src: "" },
-  { id: "alien", label: "Alien", src: "" },
+  { id: "cat", label: "Sleepy cat" },
+  { id: "alien", label: "Glow spirit" },
 ] as const;
 
 type CompanionId = (typeof companions)[number]["id"];
@@ -304,20 +302,47 @@ export function FocusPlant({
   running,
   progress,
   complete,
+  onExit,
 }: {
   running: boolean;
   progress: number;
   complete: boolean;
+  onExit: () => void;
 }) {
   const [watered, setWatered] = useState(false);
   const [status, setStatus] = useState("");
   const [companion, setCompanion] = useState<CompanionId>("potted");
   const [pickerOpen, setPickerOpen] = useState(false);
   const [reminding, setReminding] = useState(true);
+  const [distracted, setDistracted] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>();
   const reminder = useRef<ReturnType<typeof setTimeout>>();
   const root = useRef<HTMLDivElement>(null);
   const pickerTrigger = useRef<HTMLButtonElement>(null);
+  const resumeButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => watchFocusDepartures(() => {
+    setDistracted(true);
+    setPickerOpen(false);
+  }), []);
+  useEffect(() => {
+    if (!distracted) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const background = root.current?.closest(".alexis-app")?.querySelectorAll<HTMLElement>(
+      ".page-content, .focus-toolbar, .floating-menu, #workspace-sidebar",
+    );
+    const original = Array.from(background ?? [], element => ({ element, inert: element.inert }));
+    original.forEach(({ element }) => { element.inert = true; });
+    const focusResume = () => {
+      if (!document.hidden) resumeButton.current?.focus();
+    };
+    focusResume();
+    window.addEventListener("focus", focusResume);
+    return () => {
+      window.removeEventListener("focus", focusResume);
+      original.forEach(({ element, inert }) => { element.inert = inert; });
+      if (previous?.isConnected && !document.hidden) previous.focus();
+    };
+  }, [distracted]);
   useEffect(() => {
     let composer: Element | null = null;
     const measure = () => {
@@ -382,7 +407,7 @@ export function FocusPlant({
   function water() {
     clearTimeout(timer.current);
     setWatered(true);
-    setStatus(companion === "cat" ? "Your cat is purring." : companion === "alien" ? "Your visitor waves back." : "Your plant is watered.");
+    setStatus(companion === "cat" ? "Your cat is purring." : companion === "alien" ? "Your spirit glows a little brighter." : "Your mushroom is watered.");
     timer.current = setTimeout(() => setWatered(false), 2600);
   }
   function chooseCompanion(id: CompanionId, label: string) {
@@ -399,8 +424,10 @@ export function FocusPlant({
       window.localStorage.setItem("alexis-focus-companion", id);
     } catch {}
   }
-  const message = watered
-    ? companion === "cat" ? "purr" : companion === "alien" ? "A little hello, from far away." : "A little water. A little growth."
+  const message = distracted
+    ? "Screen blocked. Stay focused."
+    : watered
+    ? companion === "cat" ? "A sleepy little purr." : companion === "alien" ? "A little glow, just for you." : "A little water. A little growth."
     : complete
       ? `${active.label} made it through with you.`
       : running
@@ -409,7 +436,20 @@ export function FocusPlant({
   return (
     <div
       ref={root}
-      className={`focus-plant companion-${companion} ${running ? "is-growing" : ""} ${watered ? "is-watered" : ""} ${complete ? "is-complete" : ""} ${reminding ? "is-reminding" : ""} ${pickerOpen ? "is-picking" : ""}`}
+      className={`focus-plant companion-${companion} ${running ? "is-growing" : ""} ${watered ? "is-watered" : ""} ${complete ? "is-complete" : ""} ${reminding ? "is-reminding" : ""} ${pickerOpen ? "is-picking" : ""} ${distracted ? "is-distracted" : ""}`}
+      role={distracted ? "dialog" : undefined}
+      aria-modal={distracted ? true : undefined}
+      aria-label={distracted ? "Return to focus" : undefined}
+      aria-describedby={distracted ? "focus-return-description" : undefined}
+      onKeyDown={event => {
+        if (!distracted || event.key !== "Tab") return;
+        const controls = root.current?.querySelectorAll<HTMLElement>("button:not(:disabled), a[href]");
+        if (!controls?.length) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }}
       style={
         {
           "--plant-growth": String(
@@ -418,8 +458,16 @@ export function FocusPlant({
         } as React.CSSProperties
       }
     >
+      {distracted && <div className="focus-return-shield" aria-hidden="true" />}
       <div className="focus-plant-bubble" role="status">
         {message}
+        {distracted && <>
+          <p id="focus-return-description">You stepped away. Keep this tab open—the rest can wait.</p>
+          <div className="focus-return-actions">
+            <button ref={resumeButton} onClick={() => setDistracted(false)}>Back to focus</button>
+            <button onClick={onExit}>Exit focus</button>
+          </div>
+        </>}
       </div>
       {pickerOpen && (
         <div
@@ -436,9 +484,9 @@ export function FocusPlant({
                 aria-pressed={companion === item.id}
                 onClick={() => chooseCompanion(item.id, item.label)}
               >
-                {item.id === "potted" ? <img src={item.src} alt="" draggable={false} /> : <FamiliarArt kind={item.id} />}
+                <FamiliarArt kind={item.id === "potted" ? "mushroom" : item.id} />
                 <span>{item.label}</span>
-                <small>{item.id === "potted" ? "Water & grow" : item.id === "cat" ? "Pet & purr" : "Greet & orbit"}</small>
+                <small>{item.id === "potted" ? "Water & grow" : item.id === "cat" ? "Pet & purr" : "Greet & glow"}</small>
               </button>
             ))}
           </div>
@@ -453,48 +501,8 @@ export function FocusPlant({
       >
         <span className="plant-shadow" />
         <span className="plant-art">
-          {companion === "potted" ? (
-            <>
-              <img
-                className="plant-leaves"
-                src="/brand/focus-plant-leaves.svg"
-                alt=""
-                draggable={false}
-              />
-              <img
-                className="plant-pot"
-                src="/brand/focus-plant-pot.svg"
-                alt=""
-                draggable={false}
-              />
-              <svg
-                className="plant-face"
-                viewBox="0 0 36 36"
-                aria-hidden="true"
-              >
-                <g className="plant-eyes">
-                  <ellipse cx="15" cy="30" rx=".65" ry=".9" />
-                  <ellipse cx="21" cy="30" rx=".65" ry=".9" />
-                </g>
-                <path
-                  d="M16.5 32 Q18 33.3 19.5 32"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth=".6"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </>
-          ) : (
-            <FamiliarArt kind={companion} />
-          )}
+          <FamiliarArt kind={companion === "potted" ? "mushroom" : companion} />
         </span>
-        {watered && companion === "potted" && (
-          <span className="plant-water" aria-hidden="true">
-            <Droplets size={25} />
-            <Heart size={13} />
-          </span>
-        )}
       </button>
       <button
         ref={pickerTrigger}
@@ -511,15 +519,7 @@ export function FocusPlant({
       <span className="sr-only" role="status">
         {status}
       </span>
-      <a
-        className="plant-credit"
-        href={companion === "potted" ? "https://github.com/jdecked/twemoji" : "/brand/companions/LICENSE.txt"}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={companion === "potted" ? "Plant artwork: Twemoji, CC BY 4.0" : "Original familiar artwork, CC0"}
-      >
-        {companion === "potted" ? "Twemoji · CC BY 4.0" : "Original art · CC0"}
-      </a>
+      <a className="plant-credit" href="/brand/companions/ARTWORK.md" target="_blank" rel="noreferrer" aria-label="About the companion artwork">Companion artwork</a>
     </div>
   );
 }

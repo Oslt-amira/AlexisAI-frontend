@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* The supplied dark tile becomes ivory on dark surfaces, retaining its silhouette. */
+.alexis-logo { filter: none; }
+.dark .alexis-logo,
+:root[data-theme="dark"] .alexis-logo { filter: grayscale(1) invert(1); }
+:root[data-theme="light"] .alexis-logo { filter: none; }
+.voice-bot-logo { filter: brightness(0); }
+.dark .voice-bot-logo,
+:root[data-theme="dark"] .voice-bot-logo { filter: brightness(0) invert(1); }
+:root[data-theme="light"] .voice-bot-logo { filter: brightness(0); }
  
 @layer base {
   :root {

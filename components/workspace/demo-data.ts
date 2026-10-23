@@ -17,7 +17,7 @@ export const initialFiles: StudyFile[] = [
     subject: "Biology",
     kind: "PDF",
     pages: 24,
-    date: "2 hours ago",
+    date: "22 Oct 2024",
     color: "sage",
     summary:
       "Cells convert energy through cellular respiration. Glycolysis occurs in the cytoplasm, the Krebs cycle in the mitochondrial matrix, and oxidative phosphorylation at the inner mitochondrial membrane. ATP stores energy for cellular work. The membrane's selective permeability maintains homeostasis.",
@@ -28,7 +28,7 @@ export const initialFiles: StudyFile[] = [
     subject: "Psychology",
     kind: "PDF",
     pages: 18,
-    date: "Yesterday",
+    date: "21 Oct 2024",
     color: "sand",
     summary:
       "Memory has three key processes: encoding, storage, and retrieval. Working memory temporarily holds information, while long-term memory stores knowledge over time. Active recall strengthens retrieval pathways and spaced repetition helps counter the forgetting curve.",
@@ -39,7 +39,7 @@ export const initialFiles: StudyFile[] = [
     subject: "Chemistry",
     kind: "DOCX",
     pages: 12,
-    date: "Yesterday",
+    date: "21 Oct 2024",
     color: "lavender",
     summary:
       "Carbon forms four covalent bonds. Functional groups determine a molecule's chemical properties. Alcohols contain hydroxyl groups, carboxylic acids contain carboxyl groups, and amines contain amino groups. Reaction mechanisms track electron movement.",
@@ -50,7 +50,7 @@ export const initialFiles: StudyFile[] = [
     subject: "Biology",
     kind: "PDF",
     pages: 32,
-    date: "Oct 16",
+    date: "16 Oct 2024",
     color: "sage",
     summary:
       "DNA stores genetic information in nucleotide sequences. During transcription, RNA polymerase produces messenger RNA. Ribosomes translate mRNA into proteins. Mendel's laws describe patterns of inheritance, including segregation and independent assortment.",
@@ -61,7 +61,7 @@ export const initialFiles: StudyFile[] = [
     subject: "Mathematics",
     kind: "PDF",
     pages: 16,
-    date: "Oct 15",
+    date: "15 Oct 2024",
     color: "peach",
     summary:
       "Integration finds accumulated quantities and the area under a curve. The fundamental theorem of calculus links integration and differentiation. Techniques include substitution, integration by parts, and partial fractions.",

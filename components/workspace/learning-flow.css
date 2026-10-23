@@ -58,7 +58,7 @@
   width: max-content;
   max-width: min(330px, calc(100vw - 32px));
   padding: 5px;
-  max-height: 255px;
+  max-height: 200px;
   overflow: auto;
 }
 .platform-options.opens-above {
@@ -278,7 +278,7 @@
   background: transparent;
 }
 .context-document-list {
-  max-height: 220px;
+  max-height: 150px;
   overflow: auto;
 }
 .context-document-list > button {

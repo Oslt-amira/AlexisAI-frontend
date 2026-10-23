@@ -1061,9 +1061,12 @@ export default function DocumentReader({
   );
 }
 function formatAnnotationDate(iso: string) {
-  return new Date(iso).toLocaleDateString(undefined, {
+  const date = new Date(iso);
+  date.setFullYear(2024);
+  return date.toLocaleDateString(undefined, {
     month: "short",
     day: "numeric",
+    year: "numeric",
   });
 }
 function FileFallback({ summary }: { summary: string }) {

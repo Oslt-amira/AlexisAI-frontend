@@ -160,7 +160,7 @@
   transition: background 0.2s;
 }
 .focus-timer-dot.is-running {
-  background: #3f7a4f;
+  background: var(--green);
   animation: focus-pulse 2.4s ease-in-out infinite;
 }
 .focus-timer-copy {
@@ -689,10 +689,10 @@
 @keyframes focus-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 #3f7a4f33;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 20%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 4px #3f7a4f12;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 7%, transparent);
   }
 }
 @media (max-width: 600px) {
@@ -799,38 +799,79 @@
   .composer .chat-attachment-list { padding: 8px 10px 0; }
 }
 
-/* Original familiars: quiet forms and individual, restrained motion. */
-.familiar-art { width: 100%; height: 100%; overflow: visible; }
+/* Sculptural companions: restrained materials and slow, individual movement. */
+.focus-plant { width: 112px; }
+.focus-plant-button { width: 112px; height: 120px; }
+.focus-plant-bubble { bottom: 132px; }
+.plant-companion-menu { width: 310px; bottom: 140px; }
 .plant-companion-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.plant-companion-menu { width: 296px; }
-.plant-companion-options .familiar-art { width: 46px; height: 56px; }
-.plant-companion-options img { height: 56px; }
-.plant-companion-options button { gap: 6px; padding: 12px 3px; }
+.plant-companion-options button { gap: 6px; padding: 10px 3px; }
 .plant-companion-options small { font-size: 8px; color: var(--muted-ink); white-space: nowrap; }
-.companion-cat .plant-art, .companion-alien .plant-art { inset: -8px 0 0; }
-.companion-cat.is-watered .plant-art, .companion-alien.is-watered .plant-art { animation: none; }
-.familiar-cat-tail { transform-origin: 81px 121px; animation: familiar-tail 7s ease-in-out infinite; }
-.familiar-cat-eyes { transform-origin: 62px 59px; animation: familiar-blink 8s infinite; }
-.familiar-purr, .familiar-signal { opacity: 0; }
-.companion-cat .focus-plant-button:hover .plant-art, .companion-alien .focus-plant-button:hover .plant-art { transform: none; }
-.companion-cat .focus-plant-button:hover .familiar-cat-head { transform: rotate(-4deg); }
-.familiar-cat-head { transform-origin: 62px 84px; transition: transform .4s ease; }
-.companion-cat.is-watered .familiar-cat-head { transform: rotate(-7deg) translateY(2px); }
-.companion-cat.is-watered .familiar-cat-eyes { transform: scaleY(.15); animation: none; }
-.companion-cat.is-watered .familiar-cat-tail { animation: familiar-tail 1.3s ease-in-out infinite; }
-.companion-cat.is-watered .familiar-purr { animation: familiar-purr 1s ease-in-out infinite; }
-.familiar-alien-body { transform-origin: 60px 80px; animation: familiar-hover 6s ease-in-out infinite; }
-.familiar-alien-hand { transform-origin: 73px 94px; }
-.companion-alien.is-watered .familiar-alien-hand { animation: familiar-wave .8s ease-in-out 3; }
-.companion-alien.is-watered .familiar-signal { animation: familiar-purr 1.2s ease-in-out 2; }
-.companion-alien.is-growing .familiar-alien-shadow { animation: familiar-shadow 6s ease-in-out infinite; }
-@keyframes familiar-tail { 0%, 70%, 100% { transform: rotate(0); } 80% { transform: rotate(-9deg); } 90% { transform: rotate(4deg); } }
-@keyframes familiar-blink { 0%, 44%, 48%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.12); } }
-@keyframes familiar-hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@keyframes familiar-shadow { 0%, 100% { transform: scaleX(1); opacity: .18; } 50% { transform: scaleX(.8); opacity: .1; } }
-@keyframes familiar-wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-14deg); } }
-@keyframes familiar-purr { 0%, 100% { opacity: 0; } 50% { opacity: .7; } }
-@media (prefers-reduced-motion: reduce) { .focus-plant .familiar-art * { animation: none !important; transition: none !important; } .is-watered .familiar-purr, .is-watered .familiar-signal { opacity: .7; } }
+.familiar-art { position: relative; display: block; width: 100%; height: 100%; pointer-events: none; }
+.familiar-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.plant-companion-options .familiar-art { width: 68px; height: 68px; }
+.focus-plant .plant-art { inset: 0; }
+.focus-plant .focus-plant-button:hover .plant-art { transform: translateY(-2px); }
+.focus-plant.is-watered .plant-art { animation: none; }
+.familiar-art .mushroom-body { transform-origin: 60px 100px; }
+.familiar-art .mushroom-cap { transform-origin: 60px 64px; }
+.familiar-art .mushroom-sprout { transform-origin: 78px 100px; }
+.familiar-art .cat-body { transform-origin: 60px 96px; }
+.familiar-art .cat-head { transform-origin: 42px 88px; }
+.familiar-art .cat-tail { transform-origin: 90px 81px; }
+.familiar-art .spirit-body { transform-origin: 60px 65px; }
+.familiar-art .spirit-fins { transform-origin: 60px 65px; }
+.focus-plant-button .mushroom-cap { animation: familiar-cap 9s ease-in-out infinite; }
+.focus-plant-button .cat-body { animation: familiar-rest 6s ease-in-out infinite; }
+.focus-plant-button .cat-tail { animation: familiar-tail 10s ease-in-out infinite; }
+.focus-plant-button .spirit-body { animation: familiar-drift 8s ease-in-out infinite; }
+.focus-plant-button .spirit-fins { animation: familiar-rest 6s ease-in-out infinite; }
+.is-watered .focus-plant-button .mushroom-sprout { animation: familiar-unfurl 2.6s ease both; }
+.is-watered .focus-plant-button .mushroom-cap { animation-duration: 2.6s; }
+.is-watered .focus-plant-button .cat-head { animation: familiar-nuzzle 2.6s ease both; }
+.is-watered .focus-plant-button .cat-tail { animation-duration: 2.6s; }
+.is-watered .focus-plant-button .spirit-body { animation: familiar-greet 2.6s ease both; }
+@keyframes familiar-cap { 0%, 100% { transform: rotate(-.7deg); } 50% { transform: rotate(.7deg); } }
+@keyframes familiar-rest { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.025); } }
+@keyframes familiar-tail { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-4deg); } }
+@keyframes familiar-drift { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-4px) rotate(1deg); } }
+@keyframes familiar-unfurl { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(10deg) scale(1.1); } }
+@keyframes familiar-nuzzle { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-5deg); } }
+@keyframes familiar-greet { 0%, 100% { transform: translateY(0); filter: brightness(1); } 50% { transform: translateY(-5px); filter: brightness(1.15); } }
 @media (max-width: 600px) {
-  .focus-plant { bottom: max(145px, var(--composer-clearance, 145px)); }
+  .focus-plant { width: 84px; bottom: max(145px, var(--composer-clearance, 145px)); }
+  .focus-plant-button { width: 84px; height: 92px; }
+  .focus-plant-bubble { bottom: 105px; }
+  .plant-companion-menu { bottom: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-plant .familiar-art, .focus-plant .familiar-art * { animation: none !important; transition: none !important; }
+}
+
+/* A companion-led return screen after leaving a Focus session. */
+.focus-plant.is-distracted { z-index: 140; }
+.focus-return-shield { position: fixed; inset: 0; z-index: -1; background: color-mix(in srgb,var(--canvas) 72%,transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); pointer-events: auto; }
+.focus-plant.is-distracted .focus-plant-bubble { opacity: 1; transform: none; pointer-events: auto; white-space: normal; width: min(290px,calc(100vw - 40px)); max-height: calc(100dvh - 220px); overflow-y: auto; padding: 17px; border-color: var(--green-border); border-radius: 15px 15px 4px 15px; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.5; box-shadow: 0 12px 40px #00000012; }
+.focus-plant.is-distracted .focus-plant-bubble p { margin: 7px 0 15px; color: var(--muted-ink); font-size: 11px; font-weight: 400; line-height: 1.6; }
+.focus-return-actions { display: flex; align-items: center; gap: 9px; }
+.focus-return-actions button { padding: 8px 11px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+.focus-return-actions button:first-child { color: var(--brand-on); background: var(--green); }
+.focus-return-actions button:last-child { color: var(--muted-ink); }
+.focus-return-actions button:hover { filter: brightness(.95); }
+.focus-return-actions button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .focus-plant.is-distracted { bottom: max(115px,env(safe-area-inset-bottom)); right: 18px; }
+  .focus-plant.is-distracted .focus-plant-bubble { max-height: calc(100dvh - 235px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-return-shield, .focus-return-actions button { transition: none; }
+}
+
+/* A barely tinted half-circle, resting beneath the viewport. */
+.inset-workspace .focus-breathing-glow { left: 50%; bottom: -40vw; width: 80vw; height: 80vw; border-radius: 50%; transform: translateX(-50%); transform-origin: center; filter: blur(24px); background: radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--green) 12%,transparent) 0%,color-mix(in srgb,var(--green) 7%,transparent) 42%,color-mix(in srgb,var(--green) 2%,transparent) 62%,transparent 74%); animation: focus-soft-breathe 14s ease-in-out infinite; opacity: .26; }
+.inset-workspace .focus-breathing-glow.is-running { animation-play-state: running; opacity: .26; visibility: visible; }
+.inset-workspace .focus-breathing-glow.is-paused { animation: none; opacity: 0; visibility: hidden; }
+@keyframes focus-soft-breathe { 0%,100% { opacity: .22; } 50% { opacity: .34; } }
+@media (prefers-reduced-motion: reduce) {
+  .inset-workspace .focus-breathing-glow.is-running { animation: none; opacity: .26; }
 }

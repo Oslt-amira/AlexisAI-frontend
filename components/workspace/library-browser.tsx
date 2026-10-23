@@ -553,7 +553,9 @@ export default function LibraryBrowser({
                     )}
                   </p>
                 </div>
-                <span className="document-date flex items-end">{file.date}</span>
+                <span className="document-date flex items-end">
+                  {file.date}
+                </span>
               </button>
               <button
                 className="icon-button library-entry-options"

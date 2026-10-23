@@ -99,8 +99,8 @@
   --swatch: #8a6a3f;
 }
 :root[data-accent="purple"] .alexis-app {
-  --green: #3f2a58;
-  --green-hover: #523a6d;
+  --green: #6946a3;
+  --green-hover: #7953b5;
   --green-soft: #f1ecf6;
   --green-ink: #6b5583;
   --green-border: #ddd3e8;
@@ -123,8 +123,8 @@
   --brand-glow: #cfd6db40;
 }
 :root[data-accent="amber"] .alexis-app {
-  --green: #5a4326;
-  --green-hover: #6d5333;
+  --green: #956326;
+  --green-hover: #a57230;
   --green-soft: #f7f0e4;
   --green-ink: #7d6139;
   --green-border: #e6d9c3;
@@ -135,8 +135,8 @@
   --brand-glow: #d8bf9340;
 }
 :root[data-theme="dark"][data-accent="purple"] .alexis-app {
-  --green: #6a4d8a;
-  --green-hover: #7b5c9c;
+  --green: #8257ae;
+  --green-hover: #9064bd;
   --green-soft: #241d2e;
   --green-ink: #c3b0d8;
   --green-border: #4a3a5c;
@@ -159,8 +159,8 @@
   --brand-glow: #aeb9c033;
 }
 :root[data-theme="dark"][data-accent="amber"] .alexis-app {
-  --green: #7a5c34;
-  --green-hover: #8c6b3f;
+  --green: #986b30;
+  --green-hover: #a57538;
   --green-soft: #2a2318;
   --green-ink: #d9bc8b;
   --green-border: #55452c;
@@ -2333,6 +2333,8 @@
 }
 .upgrade-modal-content h2 {
   font-size: 32px;
+  line-height: 0.9;
+ 
 }
 .plan-price {
   font-size: 44px;
@@ -3043,3 +3045,9 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* The supplied logo includes its own background and folded document shape. */
+.alexis-app .emblem { background: transparent; }
+.alexis-app .emblem img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.member-avatar { overflow: hidden; flex-shrink: 0; }
+.member-avatar > img, .message-avatar > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }

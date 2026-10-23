@@ -127,22 +127,6 @@ export default function ContextPicker({
             ))}
             {!visible.length && <p>No documents found.</p>}
           </div>
-          <footer>
-            <span>
-              {selected.length
-                ? "Only selected documents will be used."
-                : "Nothing selected? Alexis uses your whole library."}
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                trigger.current?.focus();
-              }}
-            >
-              Done
-            </button>
-          </footer>
         </section>
       )}
     </div>

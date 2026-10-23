@@ -8,6 +8,8 @@ import {
   Play,
   PanelRightClose,
   PanelRightOpen,
+  PanelLeftClose,
+  PanelLeftOpen,
   Focus,
   RefreshCw,
   ArrowRight,
@@ -28,13 +30,11 @@ import {
   Flame,
   FolderOpen,
   GraduationCap,
-  HelpCircle,
   Home,
   Layers3,
   Leaf,
   ListChecks,
   Loader2,
-  LogOut,
   Menu,
   MessageCircle,
   MoreHorizontal,
@@ -67,6 +67,7 @@ import "./design-system.css";
 import "./inline-chat.css";
 import ConversationOrganizer from "./conversation-organizer";
 import VoiceAssistant from "./voice-assistant";
+import SidebarProfile from "./sidebar-profile";
 import ChatModePicker from "./chat-mode-picker";
 import ChatResources, {
   type ChatMode,
@@ -122,6 +123,7 @@ type Modal =
   | "welcome"
   | "sync"
   | "account"
+  | "upgrade"
   | null;
 const palettes = [
   { id: "green", name: "Sage", hint: "Calm and grounded" },
@@ -192,7 +194,7 @@ const seedConversations: Conversation[] = [
 function Emblem({ className = "" }: { className?: string }) {
   return (
     <span className={`emblem ${className}`}>
-      <img src="/brand/emblem.svg" alt="Alexis" />
+      <img className="alexis-logo" src="/brand/logo.svg" alt="Alexis" />
     </span>
   );
 }
@@ -325,6 +327,10 @@ export default function AlexisWorkspace() {
     setFocusMode(true);
     setMobileMenu(false);
   }
+  function exitFocus() {
+    setFocusMode(false);
+    if (timerRunning) toggleTimer();
+  }
   function exportCalendar() {
     const escape = (v: string) =>
       v
@@ -411,6 +417,25 @@ export default function AlexisWorkspace() {
   const [modal, setModal] = useState<Modal>(null);
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  useEffect(() => {
+    try {
+      setSidebarCollapsed(
+        localStorage.getItem("alexis-sidebar-collapsed") === "true",
+      );
+    } catch {}
+  }, []);
+  function toggleSidebar() {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      setMobileMenu(false);
+      return;
+    }
+    const next = !sidebarCollapsed;
+    setSidebarCollapsed(next);
+    try {
+      localStorage.setItem("alexis-sidebar-collapsed", String(next));
+    } catch {}
+  }
   const [files, setFiles] = useState<StudyFile[]>(initialFiles);
   const [tasks, setTasks] = useState<StudyTask[]>(initialTasks);
   const [conversations, setConversations] =
@@ -559,13 +584,30 @@ export default function AlexisWorkspace() {
       const saved = localStorage.getItem("alexis-demo-v1");
       if (saved) {
         const data = JSON.parse(saved);
-        if (Array.isArray(data.files))
+        if (Array.isArray(data.files)) {
+          const savedFiles = data.files.map((file: StudyFile) => {
+            const sample = initialFiles.find((item) => item.id === file.id);
+            return sample &&
+              sample.date.includes("2024") &&
+              file.source !== "upload"
+              ? { ...file, date: sample.date }
+              : file;
+          });
           setFiles(
-            data.files.some((file: StudyFile) => file.id === openReadingFile.id)
-              ? data.files
-              : [openReadingFile, ...data.files],
+            savedFiles.some((file: StudyFile) => file.id === openReadingFile.id)
+              ? savedFiles
+              : [openReadingFile, ...savedFiles],
           );
-        if (Array.isArray(data.tasks)) setTasks(data.tasks);
+        }
+        if (Array.isArray(data.tasks)) {
+          setTasks(
+            data.tasks.map((task: StudyTask) => ({
+              ...task,
+              date: taskDate(task),
+              day: weekDay(taskDate(task)),
+            })),
+          );
+        }
         if (Array.isArray(data.libraryCollections))
           setLibraryCollections(
             data.libraryCollections.filter(
@@ -1293,7 +1335,7 @@ export default function AlexisWorkspace() {
         <div className="composer-send">
           <button
             type="button"
-            className="composer-voice-button"
+            className="attach-button"
             aria-label="Talk to Alexis"
             title="Talk to Alexis"
             onClick={() => {
@@ -1302,6 +1344,11 @@ export default function AlexisWorkspace() {
               setVoiceOpen(true);
             }}
           >
+            {/* <img
+              src="/brand/logo%20bot.svg"
+              alt=""
+              className="composer-bot-mark"
+            /> */}
             <Mic size={17} />
           </button>
           <button
@@ -1503,7 +1550,7 @@ export default function AlexisWorkspace() {
     );
   return (
     <div
-      className={`alexis-app inset-workspace ${view === "My library" ? "view-library" : view === "Study room" ? "view-tools" : view === "Study planner" ? "view-planner" : ""} ${view === "Home" ? "view-discuss" : view === "Ask Alexis" && !voiceOpen ? "view-chat" : ""} ${focusMode ? "is-focused" : ""} ${materialsCollapsed ? "materials-collapsed" : ""}`}
+      className={`alexis-app inset-workspace ${sidebarCollapsed ? "sidebar-collapsed" : ""} ${view === "My library" ? "view-library" : view === "Study room" ? "view-tools" : view === "Study planner" ? "view-planner" : ""} ${view === "Home" ? "view-discuss" : view === "Ask Alexis" && !voiceOpen ? "view-chat" : ""} ${focusMode ? "is-focused" : ""} ${materialsCollapsed ? "materials-collapsed" : ""}`}
     >
       {mobileMenu && (
         <button
@@ -1512,26 +1559,66 @@ export default function AlexisWorkspace() {
           onClick={() => setMobileMenu(false)}
         />
       )}
-      <aside className={`sidebar ${mobileMenu ? "is-open" : ""}`}>
+      <aside
+        id="workspace-sidebar"
+        className={`sidebar ${mobileMenu ? "is-open" : ""}`}
+        aria-label="Workspace navigation"
+      >
+        <div className="sidebar-brand-row">
+          <button
+            className="brand"
+            onClick={() => {
+              setVoiceOpen(false);
+              navigate("Home");
+            }}
+            aria-label="Alexis home"
+          >
+            <Emblem />
+          </button>
+          <button
+            className="sidebar-collapse-button icon-button"
+            onClick={toggleSidebar}
+            aria-label={
+              sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"
+            }
+            title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            aria-expanded={!sidebarCollapsed}
+            aria-controls="workspace-sidebar"
+          >
+            {sidebarCollapsed ? (
+              <PanelLeftOpen size={17} />
+            ) : (
+              <PanelLeftClose size={17} />
+            )}
+          </button>
+        </div>
         <button
-          className="brand"
-          onClick={() => {
-            setVoiceOpen(false);
-            navigate("Home");
-          }}
-          aria-label="Alexis home"
+          className="new-session"
+          onClick={newChat}
+          aria-label="New chat"
+          title="New chat"
         >
-          <Emblem />
-          <span>Alexis</span>
-        </button>
-        <button className="new-session" onClick={newChat}>
           <Plus size={17} />
-          New chat
+          <span>New chat</span>
         </button>
         <nav aria-label="Main navigation">
           {navItems.map((item) => (
             <button
               key={item.name}
+              aria-label={
+                item.name === "My library"
+                  ? "Library"
+                  : item.name === "Study planner"
+                    ? "Planner"
+                    : item.name
+              }
+              title={
+                item.name === "My library"
+                  ? "Library"
+                  : item.name === "Study planner"
+                    ? "Planner"
+                    : item.name
+              }
               aria-current={
                 view === item.name ||
                 (item.name === "Home" && view === "Ask Alexis")
@@ -1564,31 +1651,24 @@ export default function AlexisWorkspace() {
           }}
         />
         <div className="sidebar-bottom">
-          <div className="profile-compact">
-            <div className="profile-row">
-              <button
-                className="profile-account"
-                onClick={() => navigate("Settings")}
-                aria-label="Open account"
-              >
-                <span className="member-avatar">{name.charAt(0) || "A"}</span>
-                <span>
-                  <b>{name || "Your account"}</b>
-                  <small>Free plan</small>
-                </span>
-                <Settings2 size={14} className="profile-settings" />
-              </button>
-              <button
-                className="profile-menu-trigger"
-                aria-label="Open account options"
-                aria-haspopup="dialog"
-                aria-expanded={modal === "account"}
-                onClick={() => setModal("account")}
-              >
-                <MoreHorizontal size={17} />
-              </button>
-            </div>
-          </div>
+          <SidebarProfile
+            name={name}
+            email={email}
+            onPlus={() => {
+              setMobileMenu(false);
+              setModal("upgrade");
+            }}
+            onPersonalize={() => {
+              setMobileMenu(false);
+              setModal("account");
+            }}
+            onSettings={() => navigate("Settings")}
+            onHelp={() => {
+              setMobileMenu(false);
+              setModal("welcome");
+            }}
+            onLogout={logout}
+          />
         </div>
       </aside>
       <div className="workspace-main">
@@ -1647,10 +1727,7 @@ export default function AlexisWorkspace() {
             onDuration={resetTimer}
             onToggle={toggleTimer}
             onReset={() => resetTimer()}
-            onExit={() => {
-              setFocusMode(false);
-              if (timerRunning) toggleTimer();
-            }}
+            onExit={exitFocus}
           />
         )}
 
@@ -1671,6 +1748,7 @@ export default function AlexisWorkspace() {
               running={timerRunning}
               progress={1 - secondsLeft / (timerDuration * 60)}
               complete={secondsLeft === 0}
+              onExit={exitFocus}
             />
           </>
         )}
@@ -1936,7 +2014,10 @@ export default function AlexisWorkspace() {
                           <Emblem />
                         ) : (
                           <span className="message-avatar">
-                            {name.charAt(0)}
+                            <img
+                              src="/brand/randomprofile.jpg"
+                              alt="Your profile"
+                            />
                           </span>
                         )}
                         <div>
@@ -2502,13 +2583,10 @@ export default function AlexisWorkspace() {
             {modal === "account" && (
               <>
                 <div className="account-modal-head">
-                  <span className="member-avatar account-modal-avatar">
-                    {name.charAt(0) || "A"}
-                  </span>
                   <div>
-                    <span className="eyebrow">ACCOUNT</span>
-                    <h2 id="modal-title">{name || "Your account"}</h2>
-                    <p>{email}</p>
+                    <span className="eyebrow">MAKE IT YOURS</span>
+                    <h2 id="modal-title">Personalization</h2>
+                    <p>Choose your mode and colour palette.</p>
                   </div>
                 </div>
                 <div className="account-modal-section">
@@ -2566,33 +2644,6 @@ export default function AlexisWorkspace() {
                     ))}
                   </div>
                 </div>
-                <div className="account-modal-actions">
-                  <button
-                    className="account-modal-row"
-                    onClick={() => {
-                      setModal(null);
-                      navigate("Settings");
-                    }}
-                  >
-                    <Settings2 size={17} />
-                    <span>
-                      <b>Settings</b>
-                      <small>Profile, goals and preferences</small>
-                    </span>
-                    <ChevronRight size={15} />
-                  </button>
-                  <button
-                    className="account-modal-row is-danger"
-                    onClick={logout}
-                  >
-                    <LogOut size={17} />
-                    <span>
-                      <b>Log out</b>
-                      <small>Sign out of this device</small>
-                    </span>
-                    <ChevronRight size={15} />
-                  </button>
-                </div>
               </>
             )}
             {modal === "sync" && (
@@ -2625,7 +2676,7 @@ export default function AlexisWorkspace() {
                       <CalendarDays size={25} />
                       <div>
                         <h3>Your study week</h3>
-                        <p>{tasks.length} sessions · October 19–25, 2026</p>
+                        <p>{tasks.length} sessions · October 21–27, 2024</p>
                       </div>
                       <span className="sync-status">Ready to export</span>
                     </div>
@@ -3155,6 +3206,47 @@ export default function AlexisWorkspace() {
                   </button>
                 </form>
               </>
+            )}
+            {modal === "upgrade" && (
+              <div className="upgrade-modal-content">
+                <Emblem />
+                <h2 id="modal-title">Upgrade to Alexis Plus</h2>
+                <p>Everything you need to study smarter.</p>
+                <div className="plan-price">
+                  $12<span>/ month</span>
+                </div>
+                <ul>
+                  {[
+                    "Upload up to 200 documents",
+                    "Unlimited conversations",
+                    "Integrate with Google Calendar and Classroom",
+                    "Personalized study plans and progress tracking",
+                  ].map((t) => (
+                    <li key={t}>
+                      <Check size={16} />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <div className="demo-note">
+                  <p>
+                    Free for 1 month, then $12/month. Cancel anytime before your
+                    trial ends{" "}
+                  </p>
+                </div>
+                <button
+                  className="primary-button full-width"
+                  onClick={() => {
+                    setModal(null);
+                    notify(
+                      "You’re already free to explore every feature in this demo.",
+                    );
+                  }}
+                >
+                  Unlock Alexis Plus
+                  <ArrowUpRight size={16} />
+                </button>
+              </div>
             )}
             {modal === "welcome" && (
               <>

@@ -8,6 +8,7 @@ import {
   FileText,
   Layers3,
   ListChecks,
+  ListIcon,
   PencilLine,
   X,
 } from "lucide-react";
@@ -29,7 +30,7 @@ export type ChatResource = {
 };
 export const resourceIcons = {
   document: FileText,
-  summary: FileText,
+  summary: ListIcon,
   flashcards: Layers3,
   quiz: ListChecks,
   writing: PencilLine,
@@ -133,7 +134,8 @@ export default function ChatResources({
             <span className="resource-sheet-kicker">This conversation</span>
             <h2 id="chat-resources-title">Chat resources</h2>
             <p>
-              {resources.length} {resources.length === 1 ? "item" : "items"} saved
+              {resources.length} {resources.length === 1 ? "item" : "items"}{" "}
+              saved
             </p>
           </div>
           <button
@@ -155,8 +157,10 @@ export default function ChatResources({
             return (
               <section className="resource-group" key={group}>
                 <h3>
-                  <span>{group}</span>
-                  <span className="resource-group-count">{items.length}</span>
+                  <span className="mb-3">{group}</span>
+                  <span className="resource-group-count mb-3">
+                    {items.length}
+                  </span>
                 </h3>
                 {items.map((r) => {
                   const Icon = resourceIcons[r.kind];
@@ -242,9 +246,7 @@ export default function ChatResources({
                                 className="resource-writing-draft"
                                 aria-label={`Edit ${r.title}`}
                                 value={r.body || ""}
-                                onChange={(e) =>
-                                  onUpdate(r.id, e.target.value)
-                                }
+                                onChange={(e) => onUpdate(r.id, e.target.value)}
                               />
                               <div className="resource-writing-meta">
                                 <span>
